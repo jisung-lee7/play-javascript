@@ -1,5 +1,9 @@
 'use strict'
-// Callback Hell example
+/**
+ ****************************************************************************************************
+ * ### Resolve Callback Hell example with Promise
+ ****************************************************************************************************
+ */
 class UserStorage {
   loginUser(id, password) {
     return new Promise((resolve, reject) => {

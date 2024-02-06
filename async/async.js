@@ -1,16 +1,23 @@
 /**
- * async & await
+ ****************************************************************************************************
+ * ### async & await
+ ****************************************************************************************************
+
  * clear style of using promise
  */
 
-// 1. async
+/**
+ ****************************************************************************************************
+ * ### async
+ ****************************************************************************************************
+ */
 // 1.1 Promise
-// function fetchUser() {
-//   return new Promise((resolve, reject) => {
-//     // do net work request in 10 secs...
-//     return 'jisung'
-//   })
-// }
+function fetchUser() {
+  return new Promise((resolve, reject) => {
+    // do net work request in 10 secs...
+    return 'jisung'
+  })
+}
 
 // 1.2 async
 async function fetchUser() {

@@ -2,7 +2,6 @@
  ****************************************************************************************************
  * ### use strict
  ****************************************************************************************************
-
  * added in ES5
  * use this for Vanilla javascript
  */
@@ -12,7 +11,6 @@
  ****************************************************************************************************
  * ### Variable
  ****************************************************************************************************
-
  * var - don't ever use this
  * var has no block scope
  * hoisting - move declaration from bottm to top
@@ -23,6 +21,11 @@
 
  * constant - r(read only)
  * use const whenever possible.
+
+ * Data types
+ * - Immutable : primitive types, frozen objects (i.e. object.freeze())
+ * - Mutable : all objects by default are mutable in JS
+
  * favor immutable data type always for a few reasons:
  *  - security
  *  - thread safety
@@ -33,7 +36,6 @@
  ****************************************************************************************************
  * ### Variable types
  ****************************************************************************************************
-
  * primitive - single item
  *  - number, string, boolean, null, undefined, symbol
 

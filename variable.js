@@ -1,9 +1,9 @@
 /**
  ****************************************************************************************************
- * ### use strict
+ * ### Use strict
  ****************************************************************************************************
- * added in ES5
- * use this for Vanilla javascript
+ * Added in ES5
+ * Use this for Vanilla javascript
  */
 'use strict'
 
@@ -11,48 +11,48 @@
  ****************************************************************************************************
  * ### Variable
  ****************************************************************************************************
- * var - don't ever use this
- * var has no block scope
- * hoisting - move declaration from bottm to top
+ * Var - don't ever use this
+ * Var has no block scope
+ * Hoisting - move declaration from bottm to top
 
 (added in ES6)
- * let - rw(read/write)  
- * only use let if variable needs to change.
+ * Let - rw(read/write)  
+ * Only use let if variable needs to change.
 
- * constant - r(read only)
- * use const whenever possible.
+ * Constant - r(read only)
+ * Use const whenever possible.
 
  * Data types
- * - Immutable : primitive types, frozen objects (i.e. object.freeze())
+ * - Immutable : primitive types, frozen objects (e.g., object.freeze())
  * - Mutable : all objects by default are mutable in JS
 
- * favor immutable data type always for a few reasons:
- *  - security
- *  - thread safety
- *  - reduce human mistakes
+ * Favor immutable data type always for a few reasons:
+ *  - Security
+ *  - Thread safety
+ *  - Reduce human mistakes
  */
 
 /**
  ****************************************************************************************************
  * ### Variable types
  ****************************************************************************************************
- * primitive - single item
+ * Primitive - Single item
  *  - number, string, boolean, null, undefined, symbol
 
- * object
- *  - box container by building single items
+ * Object
+ *  - Box container by building single items
 
- * function
- *  - javascript supports first-class function
+ * Function
+ *  - Javascript supports first-class function
  */
 
 // number
-const nInteger = 7
-const nFloat = 7.1
+const nInteger = 7 // integer :number
+const nFloat = 7.1 // decimal number :number
 console.log(`value(nInteger): ${nInteger}, type: ${typeof nInteger}`)
 console.log(`value(nFloat): ${nFloat}, type: ${typeof nFloat}`)
 
-// special numeric values in type number
+// Special numeric values in type number
 // - infinity, -infinity, NaN
 const nInfinity = 1 / 0
 const nNegativeInfinity = -1 / 0
@@ -91,8 +91,10 @@ let nothing = null
 console.log(`value(nothing): ${nothing}, type: ${typeof nothing}`)
 
 // undefined
-let x = undefined
+let x
+let y = undefined
 console.log(`value(x): ${x}, type: ${typeof x}`)
+console.log(`value(y): ${y}, type: ${typeof y}`)
 
 // symbol, create unique identifiers for objects
 const symbol1 = Symbol('id')
@@ -111,7 +113,7 @@ console.log(`value(symbol1): ${symbol1.description}, type: ${typeof symbol1}`)
  ****************************************************************************************************
  */
 let text = 'hello'
-console.log(text.charAt(0)) // h
+console.log(text.charAt(0)) // h - runtime error
 console.log(`value(text): ${text}, type: ${typeof text}`)
 text = 1
 console.log(`value(text): ${text}, type: ${typeof text}`)
@@ -119,4 +121,4 @@ text = '7' + 5
 console.log(`value(text): ${text}, type: ${typeof text}`)
 text = '8' / '2'
 console.log(`value(text): ${text}, type: ${typeof text}`)
-console.log(text.charAt(0)) // error
+console.log(text.charAt(0)) // error - runtime error

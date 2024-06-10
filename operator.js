@@ -1,3 +1,4 @@
+'use strict'
 /**
  ****************************************************************************************************
  * ### String concatenation
@@ -13,7 +14,7 @@ console.log(`string literals: 1 + 2 = ${1 + 2}`)
  ****************************************************************************************************
  */
 console.log(1 + 1) // add
-console.log(1 - 1) // substract
+console.log(1 - 1) // subtract
 console.log(1 / 1) // divide
 console.log(1 * 1) // multiply
 console.log(1 % 1) // remainder
@@ -60,9 +61,9 @@ console.log(`10 >= 7 -> ${10 >= 6}`) // greater than or equal
 /**
  ****************************************************************************************************
  * ### Logical operators: || (or), && (and), ! (not)
- * often used to compress long if-statement
- * nullableObject && nullableObject.something
  ****************************************************************************************************
+ * Often used to compress long if-statement
+ * NullableObject && nullableObject.something
  */
 const value1 = true
 const value2 = 7 < 2
@@ -90,15 +91,15 @@ console.log(`not (!true): ${!true}`)
 const strFive = '5'
 const nFive = 5
 
-// loose equality(==), with type conversion
+// Loose equality(==), with type conversion
 console.log(`strFive == nFive -> ${strFive == nFive}`)
 console.log(`strFive != nFive -> ${strFive != nFive}`)
 
-// strict equality(===), no type conversion
+// Strict equality(===), no type conversion
 console.log(`strFive === nFive -> ${strFive === nFive}`)
 console.log(`strFive !== nFive -> ${strFive !== nFive}`)
 
-// object equality by reference
+// Object equality by reference
 const obj1 = { name: 'jisung' }
 const obj2 = { name: 'jisung' }
 const obj3 = obj1
@@ -107,11 +108,11 @@ console.log(`obj1 ==  obj2 -> ${obj1 == obj2}`)
 console.log(`obj1 === obj2 -> ${obj1 === obj2}`)
 console.log(`obj1 === obj2 -> ${obj1 === obj3}`)
 
-// equality example
+// Equality example
 console.log(`  0  ==    false   -> ${0 == false}`) // true
 console.log(`  0  ===   false   -> ${0 === false}`) // false
 console.log(` ''  ==    false   -> ${'' == false}`) // true
-console.log(` ''  ===   false   -> ${'' === false}`) // fasle
+console.log(` ''  ===   false   -> ${'' === false}`) // false
 console.log(`null ==  undefined -> ${null == undefined}`) // true
 console.log(`null === undefined -> ${null === undefined}`) // false
 
@@ -142,9 +143,9 @@ console.log(testName === 'testIf' ? 'TRUE_VALUE' : 'FALSE_VALUE')
  ****************************************************************************************************
  * ### Switch statement
  ****************************************************************************************************
- * use for multiple if checks
- * use for enum-like value check
- * use for multiple type checks in TS
+ * Use for multiple if checks
+ * Use for enum-like value check
+ * Use for multiple type checks in TS
  */
 const alpha = 'A'
 switch (alpha) {
@@ -166,14 +167,14 @@ switch (alpha) {
  ****************************************************************************************************
  */
 // while loop, while the condition is truthy,
-// body code is executed.
+// Body code is executed.
 let i = 3
 while (i > 0) {
   console.log(`while: ${i}`)
   i--
 }
 
-// do while loop, body code is excuted first,
+// do while loop, body code is executed first,
 // then check the condition.
 do {
   console.log(`do while: ${i}`)
@@ -186,11 +187,11 @@ for (i = 3; i > 0; i--) {
 }
 
 for (let i = 3; i > 0; i = i - 2) {
-  // inline variable declaration
+  // Inline variable declaration
   console.log(`inline variable for: ${i}`)
 }
 
-// nested loops - O(n^2)
+// Nested loops - O(n^2)
 for (let i = 0; i < 10; i++) {
   for (let j = 0; j < 10; j++) {
     console.log(`i: ${i}, j:${j}`)

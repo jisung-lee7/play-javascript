@@ -13,7 +13,7 @@
  ****************************************************************************************************
  * Var - don't ever use this
  * Var has no block scope
- * Hoisting - move declaration from bottm to top
+ * Hoisting - move declaration from bottom to top
 
 (added in ES6)
  * Let - rw(read/write)  
@@ -23,13 +23,13 @@
  * Use const whenever possible.
 
  * Data types
- * - Immutable : primitive types, frozen objects (e.g., object.freeze())
- * - Mutable : all objects by default are mutable in JS
+ *   - Immutable : primitive types, frozen objects (e.g., object.freeze())
+ *   - Mutable : all objects by default are mutable in JS
 
  * Favor immutable data type always for a few reasons:
- *  - Security
- *  - Thread safety
- *  - Reduce human mistakes
+ *    - Security
+ *    - Thread safety
+ *    - Reduce human mistakes
  */
 
 /**
@@ -44,6 +44,12 @@
 
  * Function
  *  - Javascript supports first-class function
+
+ * First-class function
+ *  - Functions are treated like any other variable
+ *  - Can be assigned as a value to variable
+ *  - Can be passed as an argument to other functions
+ *  - Can be returned by another function
  */
 
 // number
@@ -53,7 +59,7 @@ console.log(`value(nInteger): ${nInteger}, type: ${typeof nInteger}`)
 console.log(`value(nFloat): ${nFloat}, type: ${typeof nFloat}`)
 
 // Special numeric values in type number
-// - infinity, -infinity, NaN
+//   - infinity, -infinity, NaN
 const nInfinity = 1 / 0
 const nNegativeInfinity = -1 / 0
 const nNaN = 'not a number' / 2

@@ -7,7 +7,7 @@
 
  * JavaScript is synchronous.
  * Execute the code block in order after hoisting.
- * Synchronous : Excute code in order
+ * Synchronous : Execute code in order
  * Asynchronous : Unpredictable when code will run
  */
 
@@ -20,19 +20,31 @@ console.log('3')
  * ### Synchronous callback
  ****************************************************************************************************
  */
-function printImmediately(print) {
-  print()
+function printImmediately(callback) {
+  callback()
 }
 
-printImmediately(() => console.log('hello'))
+// callback 1
+function callbackTest() {
+  console.log('hello 1')
+}
+printImmediately(callbackTest)
+
+// callback 2
+printImmediately(function () {
+  console.log('hello 2')
+})
+
+// callback 3
+printImmediately(() => console.log('hello 3'))
 
 /**
  ****************************************************************************************************
  * ### Asynchronous callback
  ****************************************************************************************************
  */
-function printWithDelay(print, timeout) {
-  setTimeout(print, timeout)
+function printWithDelay(callback, timeout) {
+  setTimeout(callback, timeout)
 }
 printWithDelay(() => console.log('async callback'), 2000)
 
@@ -63,6 +75,7 @@ class UserStorage {
   }
 }
 const userStorage = new UserStorage()
+console.log('c.log ## userStorage ##', userStorage)
 const id = prompt('enter your id')
 const password = prompt('enter your password')
 userStorage.loginUser(
@@ -76,7 +89,6 @@ userStorage.loginUser(
           `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
         )
       },
-
       (error) => {
         console.log(error)
       }

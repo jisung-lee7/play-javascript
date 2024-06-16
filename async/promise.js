@@ -3,14 +3,17 @@
  ****************************************************************************************************
  * ### Promise
  ****************************************************************************************************
-
  * Promise is a JavaScript object for asynchronous operation.
  * state: pending -> fulfilled or rejected
  * Producer vs Consumer
  */
 
-// 1. Producer
-// when new Promise is created, the executor runs automatically.
+/**
+ ****************************************************************************************************
+ * ### Producer
+ ****************************************************************************************************
+ * When new Promise is created, the executor runs automatically.
+ */
 const promise = new Promise((resolve, reject) => {
   // doing some heavy work (network, read files)
   console.log('doing something...')
@@ -20,7 +23,18 @@ const promise = new Promise((resolve, reject) => {
   }, 2000)
 })
 
-// 2. Consumers: then, catch, finally
+console.log('c.log ## promise ##', promise)
+
+setTimeout(() => {
+  console.log('done')
+  console.log('c.log ## promise ##', promise)
+}, 3000)
+
+/**
+ ****************************************************************************************************
+ * ### Consumers: then, catch, finally
+ ****************************************************************************************************
+ */
 promise
   .then((value) => {
     console.log(value)
@@ -32,7 +46,11 @@ promise
     console.log('finally')
   })
 
-// 3. Promise chaining
+/**
+ ****************************************************************************************************
+ * ### Promise chaining
+ ****************************************************************************************************
+ */
 const fetchNumber = new Promise((resolve, reject) => {
   setTimeout(() => resolve(1), 1000)
 })
@@ -47,18 +65,24 @@ fetchNumber
   })
   .then((num) => console.log(num))
 
-// 4. Error Handling
+/**
+ ****************************************************************************************************
+ * ### Error handling
+ ****************************************************************************************************
+ */
 const getHen = () =>
   new Promise((resolve, reject) => {
-    setTimeout(() => resolve('🐓'), 1000)
+    setTimeout(() => resolve('hen'), 1000)
   })
+
 const getEgg = (hen) =>
   new Promise((resolve, reject) => {
-    setTimeout(() => reject(new Error(`error! ${hen}=>🥚`)), 1000)
+    setTimeout(() => reject(new Error(`error! ${hen} => egg`)), 1000)
   })
+
 const cook = (egg) =>
   new Promise((resolve, reject) => {
-    setTimeout(() => resolve(`${egg}=>🍳`), 1000)
+    setTimeout(() => resolve(`${egg} => fry`), 1000)
   })
 
 // getHen()
@@ -71,7 +95,7 @@ const cook = (egg) =>
 getHen() //
   .then(getEgg)
   .catch((error) => {
-    return '🥖'
+    return 'bread'
   })
   .then(cook)
   .then(console.log)

@@ -185,3 +185,27 @@ const result2 = students
   .sort((a, b) => a - b)
   .join()
 console.log('c.log ## result2 ##', result2)
+
+// Quiz
+const items = [1, 2, 3, 4, 5, 6]
+{
+  const result = items.reduce((accu, curr) => {
+    if (curr % 2 === 0) {
+      return accu + curr * 4
+    } else {
+      return accu
+    }
+  }, 0)
+  console.log('c.log ## result ##', result)
+}
+{
+  const result = items
+    .filter((item) => item % 2 === 0)
+    .map((item) => item * 4)
+    .reduce((accu, curr) => accu + curr, 0)
+  console.log('c.log ## result ##', result)
+}
+
+// Remove duplicates
+const array = ['dog1', 'cat1', 'cat2', 'dog1', 'dog2', 'cat1']
+console.log([...new Set(array)])

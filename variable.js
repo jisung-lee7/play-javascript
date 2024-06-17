@@ -94,7 +94,8 @@ console.log(`value(bTest): ${bTest}, type: ${typeof bTest}`)
 
 // null
 let nothing = null
-console.log(`value(nothing): ${nothing}, type: ${typeof nothing}`)
+// This is a bug in the early version of JavaScript. It is not fixed to maintain backward compatibility.
+console.log(`value(nothing): ${nothing}, type: ${typeof nothing}`) // object
 
 // undefined
 let x
@@ -119,7 +120,7 @@ console.log(`value(symbol1): ${symbol1.description}, type: ${typeof symbol1}`)
  ****************************************************************************************************
  */
 let text = 'hello'
-console.log(text.charAt(0)) // h - runtime error
+console.log(text.charAt(0)) // h
 console.log(`value(text): ${text}, type: ${typeof text}`)
 text = 1
 console.log(`value(text): ${text}, type: ${typeof text}`)
@@ -127,4 +128,56 @@ text = '7' + 5
 console.log(`value(text): ${text}, type: ${typeof text}`)
 text = '8' / '2'
 console.log(`value(text): ${text}, type: ${typeof text}`)
-console.log(text.charAt(0)) // error - runtime error
+// console.log(text.charAt(0)) // error - runtime error
+
+/**
+ ****************************************************************************************************
+ * ### Type conversion
+ ****************************************************************************************************
+ */
+// Implicit type conversion
+{
+  const str1 = '6'
+  const str2 = '2'
+
+  console.log(str1 / str2) // implicit type conversion
+  console.log(str1 + str2) // but it is not, so implicit type conversions can occur unexpectedly, caution is advised.
+}
+
+// Explicit type conversion
+// String()
+console.log(
+  String(7),
+  String(true),
+  String(false),
+  String(null),
+  String(undefined)
+)
+
+// Number()
+console.log(
+  Number('1234'),
+  Number('123aaa'),
+  Number('aaa1234'),
+  Number(true),
+  Number(false)
+)
+
+// Boolean()
+console.log(
+  Boolean(0),
+  Boolean(''),
+  Boolean(null),
+  Boolean(undefined),
+  Boolean(NaN)
+)
+
+// Note
+console.log(
+  Number(null), // 0
+  Number(undefined), // Nan
+  Boolean(0), // false
+  Boolean('0'), // true
+  Boolean(''), // false
+  Boolean(' ') // true
+)

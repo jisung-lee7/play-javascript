@@ -87,6 +87,8 @@ console.log(`not (!true): ${!true}`)
  ****************************************************************************************************
  * ### Equality
  ****************************************************************************************************
+ * ==  : loose equality
+ * === : strict equality
  */
 const strFive = '5'
 const nFive = 5
@@ -115,6 +117,16 @@ console.log(` ''  ==    false   -> ${'' == false}`) // true
 console.log(` ''  ===   false   -> ${'' === false}`) // false
 console.log(`null ==  undefined -> ${null == undefined}`) // true
 console.log(`null === undefined -> ${null === undefined}`) // false
+
+/**
+ ****************************************************************************************************
+ * ### Power
+ ****************************************************************************************************
+ */
+{
+  const nPow = 2 ** 3
+  console.log('c.log ## nPow ##', nPow)
+}
 
 /**
  ****************************************************************************************************
@@ -196,4 +208,20 @@ for (let i = 0; i < 10; i++) {
   for (let j = 0; j < 10; j++) {
     console.log(`i: ${i}, j:${j}`)
   }
+}
+
+// break
+while (true) {
+  let answer = confirm('Do you want to continue?')
+  if (!answer) {
+    break
+  }
+}
+
+// continue
+for (let i = 0; i < 10; i++) {
+  if (i % 2 !== 0) {
+    continue
+  }
+  console.log('c.log ## i ##', i)
 }

@@ -1,11 +1,12 @@
 'use strict'
 /**
  ****************************************************************************************************
- * ### Function
+ * ### Function(Function Declaration)
  ****************************************************************************************************
  * Fundamental building block in the program
  * Subprogram can be used multiple times
  * Performs a task or calculates a value
+ * Function declarations can be called from anywhere. The reason is due to hoisting.
 
  * Function declaration
  *   - function name(param1, param2) { body... return;}
@@ -57,11 +58,11 @@ showMessage('Hi')
  */
 function printAll(...args) {
   for (let i = 0; i < args.length; i++) {
-    console.log(args[i])
+    console.log('c.log ## args[i] ##', args[i])
   }
 
   for (const arg of args) {
-    console.log(arg)
+    console.log('c.log ## arg ##', arg)
   }
 }
 printAll('js', 'kurt', 'JisungLee')
@@ -120,13 +121,39 @@ randomQuiz('helloworld', printYes, printNo)
  ****************************************************************************************************
  * ### Arrow function
  ****************************************************************************************************
+ * An arrow function is a type of function expression.
  * Always anonymous
+ * Arrow function doesn't have their own 'this' context. 
+   When using 'this' inside an arrow function, it inherits the value from surrounding context.
+   (In a browser environment, the global object is 'window')
+
  */
 const simplePrint = () => console.log('simplePrint!')
 const add = (a, b) => a + b
 const simpleMultiply = (a, b) => {
   // do something more
   return a * b
+}
+
+// DON'T USE arrow function in object method
+{
+  let functionObj = {
+    name: 'jisung',
+    sayThis: function () {
+      console.log('c.log ## this ##', this)
+    }
+  }
+
+  functionObj.sayThis() // return this object
+
+  let arraowFunctionObj = {
+    name: 'jisung',
+    sayThis: () => {
+      console.log('c.log ## this ##', this)
+    }
+  }
+
+  arraowFunctionObj.sayThis() // return window
 }
 
 /**

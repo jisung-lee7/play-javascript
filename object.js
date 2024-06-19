@@ -34,6 +34,47 @@ console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
 delete obj3.hasJob
 console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
 
+// this
+{
+  let boy = {
+    name: 'Mike',
+    showName: function () {
+      console.log('c.log ## boy.name ##', this.name) // test user.name
+    }
+  }
+
+  let man = boy
+
+  boy = null
+  // test user.name
+  // console.log(`boy.name = ${boy.name}`) // null
+  // boy.showName() // null
+
+  console.log(`man.name = ${man.name}`)
+  man.showName()
+}
+
+// DON'T USE arrow function in object method
+{
+  let functionObj = {
+    name: 'jisung',
+    sayThis: function () {
+      console.log('c.log ## this ##', this)
+    }
+  }
+
+  functionObj.sayThis() // return this object
+
+  let arraowFunctionObj = {
+    name: 'jisung',
+    sayThis: () => {
+      console.log('c.log ## this ##', this)
+    }
+  }
+
+  arraowFunctionObj.sayThis() // return window
+}
+
 /**
  ****************************************************************************************************
  * ### Computed properties
@@ -99,6 +140,7 @@ console.log(obj3.random)
 // for (key in obj)
 for (const localKey in obj3) {
   console.log('c.log ## localKey ##', localKey)
+  console.log('c.log ## obj3[key] ##', obj3[localKey])
 }
 
 // for (value of iterable) - available in object, array, list

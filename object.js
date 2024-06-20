@@ -14,32 +14,36 @@
  * ### Literals and properties
  ****************************************************************************************************
  */
-const obj1 = {} // 'object literal' syntax
-const obj2 = new Object() // 'object constructor' syntax
+console.log(`\n[ Literals and properties ]`)
 
-function print(personParam) {
-  console.log(personParam.name)
-  console.log(personParam.age)
+{
+  const objectLiteral = {} // 'object literal' syntax
+  const objectConstructor = new Object() // 'object constructor' syntax
+
+  function doPrint(personParam) {
+    console.log(`c.log ## personParam.name ##`, personParam.name)
+    console.log(`c.log ## personParam.age ##`, personParam.age)
+  }
+
+  const objTest = { name: 'jisung', age: 1 }
+  doPrint(objTest)
+
+  // JavaScript as a dynamically typed language enables the following,
+  // can add properties later
+  objTest.hasJob = true
+  console.log(`c.log ## objTest.hasJob ##`, objTest.hasJob)
+
+  // can delete properties later
+  delete objTest.hasJob
+  console.log(`c.log ## objTest.hasJob ##`, objTest.hasJob)
 }
-
-const obj3 = { name: 'jisung', age: 7 }
-print(obj3)
-
-// With JavaScript magic (dynamically typed language)
-// can add properties later
-obj3.hasJob = true
-console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
-
-// can delete properties later
-delete obj3.hasJob
-console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
 
 // this
 {
   let boy = {
     name: 'Mike',
     showName: function () {
-      console.log('c.log ## boy.name ##', this.name) // test user.name
+      console.log(`c.log ## boy.name ##`, this.name) // test user.name
     }
   }
 
@@ -59,7 +63,7 @@ console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
   let functionObj = {
     name: 'jisung',
     sayThis: function () {
-      console.log('c.log ## this ##', this)
+      console.log(`c.log ## this ##`, this)
     }
   }
 
@@ -68,7 +72,7 @@ console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
   let arraowFunctionObj = {
     name: 'jisung',
     sayThis: () => {
-      console.log('c.log ## this ##', this)
+      console.log(`c.log ## this ##`, this)
     }
   }
 
@@ -81,22 +85,87 @@ console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
  ****************************************************************************************************
  * key should be always string
  */
-console.log(obj3.name)
-console.log(obj3['name'])
-obj3['hasJob'] = true
-console.log('c.log ## obj3.hasJob ##', obj3.hasJob)
+console.log(`\n[ Computed properties ]`)
 
-function printValue(objParam, keyParam) {
-  console.log(objParam.keyParam)
-  console.log(objParam[keyParam]) // computed properties
+{
+  const objTest = { name: 'jisung', age: 2 }
+
+  console.log(`c.log ## objTest.name ##`, objTest.name)
+  console.log(`c.log ## objTest['name'] ##`, objTest['name'])
+  console.log(`c.log ## objTest['age'] ##`, objTest['age'])
+
+  objTest['hasJob'] = true
+  console.log(`c.log ## objTest.hasJob ##`, objTest.hasJob)
+
+  function printValue(objParam, keyParam) {
+    console.log(objParam.keyParam) // undefined, the reason is objParam doesn't have key: keyParam
+    console.log(objParam[keyParam]) // computed properties
+  }
+
+  printValue(objTest, 'name')
 }
-printValue(obj3, 'name')
+
+{
+  function makeObj(key, value) {
+    return {
+      [key]: value
+    }
+  }
+
+  const obj = makeObj('gender', 'male')
+  console.log(`c.log ## obj ##`, obj)
+}
+
+{
+  const id = Symbol('id')
+  const user = {
+    name: 'Jisung',
+    age: 30,
+    [id]: 'myId'
+  }
+
+  console.log(`c.log ## user ##`, user)
+  console.log(`c.log ## user[id] ##`, user[id])
+
+  const showName = Symbol('show name')
+  user[showName] = function () {
+    console.log(`c.log ## this.name ##`, this.name)
+  }
+  user[showName]()
+
+  Object.keys(user)
+  Object.values(user)
+  Object.entries(user)
+
+  console.log(`c.log ## Object.keys(user) ##`, Object.keys(user))
+  console.log(`c.log ## Object.values(user) ##`, Object.values(user))
+  console.log(`c.log ## Object.entries(user) ##`, Object.entries(user))
+
+  for (let key in user) {
+    console.log(`c.log ## key ##`, key)
+  }
+
+  // getOwnPropertySymbols()
+  console.log(
+    `c.log ## Object.getOwnPropertySymbols(user) ##`,
+    Object.getOwnPropertySymbols(user)
+  )
+
+  // Reflect.ownKeys()
+  console.log(
+    `c.log ## Reflect.ownKeys(user)
+ ##`,
+    Reflect.ownKeys(user)
+  )
+}
 
 /**
  ****************************************************************************************************
  * ### Property value shorthand(Shorthand property names)
  ****************************************************************************************************
  */
+console.log(`\n[ Property value shorthand(Shorthand property names) ]`)
+
 const person1 = { name: 'personA', age: 1 }
 const person2 = { name: 'personB', age: 2 }
 const person3 = { name: 'personC', age: 3 }
@@ -111,69 +180,142 @@ function makePerson(name, age) {
   }
 }
 
-// Constructor function
+/**
+ ****************************************************************************************************
+ * ### Constructor function
+ ****************************************************************************************************
+ * It should begin with an uppercase letter.
+ * It should be called using the 'new' operator.(let testPerson = new Person('Jisung', 30))
+ */
+console.log(`\n[ Constructor function ]`)
+
 function Person(name, age) {
-  // this = {}
+  // this = {} // it does not exist in the real code. If called using the 'new', it behaves according to that algorithm.
   this.name = name
   this.age = age
-  // return this
+  // return this // it doesn't not exist in the real code.
 }
 
-console.log('c.log ## person4 ##', person4)
-console.log('c.log ## person5 ##', person5)
+console.log(`c.log ## person4 ##`, person4)
+console.log(`c.log ## person5 ##`, person5)
 
 /**
  ****************************************************************************************************
  * ### In operator: property existence check (key in obj)
  ****************************************************************************************************
  */
-console.log('name' in obj3)
-console.log('age' in obj3)
-console.log('random' in obj3)
-console.log(obj3.random)
+console.log(`\n[ In operator: property existence check (key in obj) ]`)
 
+{
+  const obj = { name: 'jisung', age: 3 }
+
+  console.log(`name` in obj)
+  console.log(`age` in obj)
+  console.log(`random` in obj)
+  console.log(obj.random)
+}
 /**
  ****************************************************************************************************
  * ### for..in vs for..of
  ****************************************************************************************************
  */
-// for (key in obj)
-for (const localKey in obj3) {
-  console.log('c.log ## localKey ##', localKey)
-  console.log('c.log ## obj3[key] ##', obj3[localKey])
+console.log(`\n[ for..in vs for..of ]`)
+
+{
+  // for (key in obj)
+  const obj = { name: 'jisung', age: 4 }
+
+  for (const localKey in obj) {
+    console.log(`c.log ## localKey ##`, localKey)
+    console.log(`c.log ## obj[key] ##`, obj[localKey])
+  }
 }
 
 // for (value of iterable) - available in object, array, list
 const array = [1, 2, 3, 4, 5]
 for (const value of array) {
-  console.log('c.log ## value ##', value)
+  console.log(`c.log ## value ##`, value)
 }
 
 /**
  ****************************************************************************************************
- * ### Cloning
+ * ### Object methods
  ****************************************************************************************************
  */
-// Object.assign(dest, [obj1, obj2, obj3, ...])
-const user1 = { name: 'jisung', age: '10' }
-const user2 = user1
-user2.name = 'hello, world'
-console.log('c.log ## user1 ##', user1)
+console.log(`\n[ Object methods ]`)
 
-// old way
-const user3 = {}
-for (const keyParam in user1) {
-  user3[keyParam] = user1[keyParam]
+// Object.assign(dest(initial value), [obj1, obj2, obj3, ...]) - clone object
+{
+  // Clone user1
+  const user1 = { name: 'jisung', age: '10' }
+  const user2 = user1
+  user2.name = 'hello, world'
+  console.log(`c.log ## user1 ##`, user1)
+
+  // old way
+  const user3 = {}
+  for (const keyParam in user1) {
+    user3[keyParam] = user1[keyParam]
+  }
+  console.log(`c.log ## user3 ##`, user3)
+
+  // const user4 = {}
+  // Object.assign(user4, user1)
+  const user4 = Object.assign({}, user1)
+  console.log(`c.log ## user4 ##`, user4)
+
+  // Clone fruit1, fruit2
+  const fruit1 = { color: 'red' }
+  const fruit2 = { color: 'blue', size: 'big' }
+  const mixed = Object.assign({}, fruit1, fruit2)
+  console.log(mixed.color)
+  console.log(mixed.size)
 }
-console.log('c.log ## user3 ##', user3)
 
-// const user4 = {}
-// Object.assign(user4, user1)
-const user4 = Object.assign({}, user1)
-console.log('c.log ## user4 ##', user4)
+// Object.keys() - returns an array of keys
+{
+  const user = {
+    name: 'Jisung',
+    age: 30,
+    gender: 'male'
+  }
 
-const fruit1 = { color: 'red' }
-const fruit2 = { color: 'blue', size: 'big' }
-const mixed = Object.assign({}, fruit1, fruit2)
-console.log(mixed.color)
-console.log(mixed.size)
+  const objectKeys = Object.keys(user)
+  console.log(`c.log ## objectKeys ##`, objectKeys)
+}
+
+// Object.values() - returns an array of values
+{
+  const user = {
+    name: 'Jisung',
+    age: 30,
+    gender: 'male'
+  }
+
+  const objectValues = Object.values(user)
+  console.log(`c.log ## objectValues ##`, objectValues)
+}
+
+// Object.entries() - returns an array of key/values
+{
+  const user = {
+    name: 'Jisung',
+    age: 30,
+    gender: 'male'
+  }
+
+  const objectEntries = Object.entries(user)
+  console.log(`c.log ## objectEntries ##`, objectEntries)
+}
+
+// Object.fromEntries() - returns an object created by key-value entries
+{
+  const arr = [
+    ['name', 'Jisung'],
+    ['age', 30],
+    ['gender', 'male']
+  ]
+
+  const objectFromEntries = Object.fromEntries(arr)
+  console.log(`c.log ## objectFromEntries ##`, objectFromEntries)
+}

@@ -21,7 +21,7 @@ console.log(`\n[ Variable ]`)
 
 let age = 30
 function showAge() {
-  console.log('c.log ## age ##', age)
+  console.log(`c.log ## age ##`, age)
 
   // let age = 20 // reference error - if 'let' wasn't hoisted,
 }
@@ -454,7 +454,7 @@ console.log(`c.log ## Math.PI ##`, Math.PI)
   console.log(`c.log ## desc.indexOf('man') ##`, desc.indexOf('man'))
 
   if (desc.indexOf('Hi') > -1) {
-    console.log('This sentence contains Hi')
+    console.log(`This sentence contains Hi`)
   }
 }
 

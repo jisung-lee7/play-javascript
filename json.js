@@ -19,10 +19,10 @@
  * stringify
  */
 let json = JSON.stringify(true)
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 json = JSON.stringify(['apple', 'banana'])
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 const rabbit = {
   name: 'ppoddo',
@@ -34,15 +34,15 @@ const rabbit = {
   }
 }
 json = JSON.stringify(rabbit)
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 json = JSON.stringify(rabbit, ['name', 'color'])
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 json = JSON.stringify(rabbit, (key, value) => {
   return key === 'name' ? 'jisung' : value
 })
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 /**
  ****************************************************************************************************
@@ -51,14 +51,14 @@ console.log('c.log ## json ##', json)
  * parse(json)
  */
 json = JSON.stringify(rabbit)
-console.log('c.log ## json ##', json)
+console.log(`c.log ## json ##`, json)
 
 const obj = JSON.parse(json, (key, value) => {
   console.log(`key: ${key}, value: ${value}`)
   return key === 'birthDate' ? new Date(value) : value
   // return value
 })
-console.log('c.log ## obj ##', obj)
+console.log(`c.log ## obj ##`, obj)
 
 console.log(rabbit.birthDate.getDate())
 console.log(obj.birthDate.getDate())

@@ -16,7 +16,7 @@
 */
 
 function printHello() {
-  console.log('Hello')
+  console.log(`Hello`)
 }
 
 printHello()
@@ -58,11 +58,11 @@ showMessage('Hi')
  */
 function printAll(...args) {
   for (let i = 0; i < args.length; i++) {
-    console.log('c.log ## args[i] ##', args[i])
+    console.log(`c.log ## args[i] ##`, args[i])
   }
 
   for (const arg of args) {
-    console.log('c.log ## arg ##', arg)
+    console.log(`c.log ## arg ##`, arg)
   }
 }
 printAll('js', 'kurt', 'JisungLee')
@@ -105,13 +105,13 @@ function randomQuiz(answer, yesCallback, noCallback) {
 
 // Anonymous function
 const printYes = function () {
-  console.log('yes!')
+  console.log(`yes!`)
 }
 
 // named function
 // better debugging in debugger's stack traces
 const printNo = function print() {
-  console.log('no!')
+  console.log(`no!`)
 }
 
 randomQuiz('wrong', printYes, printNo)
@@ -128,7 +128,7 @@ randomQuiz('helloworld', printYes, printNo)
    (In a browser environment, the global object is 'window')
 
  */
-const simplePrint = () => console.log('simplePrint!')
+const simplePrint = () => console.log(`simplePrint!`)
 const add = (a, b) => a + b
 const simpleMultiply = (a, b) => {
   // do something more
@@ -140,7 +140,7 @@ const simpleMultiply = (a, b) => {
   let functionObj = {
     name: 'jisung',
     sayThis: function () {
-      console.log('c.log ## this ##', this)
+      console.log(`c.log ## this ##`, this)
     }
   }
 
@@ -149,7 +149,7 @@ const simpleMultiply = (a, b) => {
   let arraowFunctionObj = {
     name: 'jisung',
     sayThis: () => {
-      console.log('c.log ## this ##', this)
+      console.log(`c.log ## this ##`, this)
     }
   }
 
@@ -162,5 +162,5 @@ const simpleMultiply = (a, b) => {
  ****************************************************************************************************
  */
 ;(function hello() {
-  console.log('IIFE')
+  console.log(`IIFE`)
 })()

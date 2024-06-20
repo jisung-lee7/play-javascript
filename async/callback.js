@@ -11,9 +11,9 @@
  * Asynchronous : Unpredictable when code will run
  */
 
-console.log('1')
-setTimeout(() => console.log('2'), 1000)
-console.log('3')
+console.log(`1`)
+setTimeout(() => console.log(`2`), 1000)
+console.log(`3`)
 
 /**
  ****************************************************************************************************
@@ -26,17 +26,17 @@ function printImmediately(callback) {
 
 // callback 1
 function callbackTest() {
-  console.log('hello 1')
+  console.log(`hello 1`)
 }
 printImmediately(callbackTest)
 
 // callback 2
 printImmediately(function () {
-  console.log('hello 2')
+  console.log(`hello 2`)
 })
 
 // callback 3
-printImmediately(() => console.log('hello 3'))
+printImmediately(() => console.log(`hello 3`))
 
 /**
  ****************************************************************************************************
@@ -46,7 +46,7 @@ printImmediately(() => console.log('hello 3'))
 function printWithDelay(callback, timeout) {
   setTimeout(callback, timeout)
 }
-printWithDelay(() => console.log('async callback'), 2000)
+printWithDelay(() => console.log(`async callback`), 2000)
 
 /**
  ****************************************************************************************************
@@ -75,7 +75,7 @@ class UserStorage {
   }
 }
 const userStorage = new UserStorage()
-console.log('c.log ## userStorage ##', userStorage)
+console.log(`c.log ## userStorage ##`, userStorage)
 const id = prompt('enter your id')
 const password = prompt('enter your password')
 userStorage.loginUser(

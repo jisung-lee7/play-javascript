@@ -12,7 +12,7 @@ function promiseFetchUser() {
 
 const promiseUser = promiseFetchUser()
 promiseUser.then((value) => console.log(`promiseUser.then() value is ${value}`))
-console.log('c.log ## promiseUser ##', promiseUser)
+console.log(`c.log ## promiseUser ##`, promiseUser)
 
 /**
  ****************************************************************************************************
@@ -28,7 +28,7 @@ async function asyncFetchUser() {
 
 const asyncUser = asyncFetchUser()
 asyncUser.then((value) => console.log(`asyncUser.then() value is ${value}`))
-console.log('c.log ## asyncUser ##', asyncUser)
+console.log(`c.log ## asyncUser ##`, asyncUser)
 
 /**
  ****************************************************************************************************
@@ -63,7 +63,7 @@ function pickFruits() {
   })
 }
 pickFruits().then((value) => {
-  console.log('c.log ## pickFruits valuse is ##', value)
+  console.log(`c.log ## pickFruits valuse is ##`, value)
 })
 
 // 2
@@ -75,7 +75,7 @@ async function asyncPickFruits() {
 }
 
 asyncPickFruits().then((value) => {
-  console.log('c.log ## asyncPickFruits valuse is ##', value)
+  console.log(`c.log ## asyncPickFruits valuse is ##`, value)
 })
 
 // 3
@@ -89,7 +89,7 @@ async function asyncDirtyPickFruits() {
 }
 
 asyncDirtyPickFruits().then((value) => {
-  console.log('c.log ## asyncDirtyPickFruits valuse is ##', value)
+  console.log(`c.log ## asyncDirtyPickFruits valuse is ##`, value)
 })
 
 // So we use Promise APIs(Promise.all, Promise.race)
@@ -101,7 +101,7 @@ function promiseAllPickFruits() {
 }
 
 promiseAllPickFruits().then((value) => {
-  console.log('c.log ## promiseAllPickFruits valuse is ##', value)
+  console.log(`c.log ## promiseAllPickFruits valuse is ##`, value)
 })
 
 // Promise.race
@@ -110,5 +110,5 @@ function promiseRacePickFruits() {
 }
 
 promiseRacePickFruits().then((value) => {
-  console.log('c.log ## promiseRacePickFruits valuse is ##', value)
+  console.log(`c.log ## promiseRacePickFruits valuse is ##`, value)
 })

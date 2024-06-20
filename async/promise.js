@@ -16,18 +16,18 @@
  */
 const promise = new Promise((resolve, reject) => {
   // doing some heavy work (network, read files)
-  console.log('doing something...')
+  console.log(`doing something...`)
   setTimeout(() => {
     resolve('jisung')
     // reject(new Error('no network'))
   }, 2000)
 })
 
-console.log('c.log ## promise ##', promise)
+console.log(`c.log ## promise ##`, promise)
 
 setTimeout(() => {
-  console.log('done')
-  console.log('c.log ## promise ##', promise)
+  console.log(`done`)
+  console.log(`c.log ## promise ##`, promise)
 }, 3000)
 
 /**
@@ -43,7 +43,7 @@ promise
     console.log(error)
   })
   .finally(() => {
-    console.log('finally')
+    console.log(`finally`)
   })
 
 /**

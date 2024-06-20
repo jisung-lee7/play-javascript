@@ -73,30 +73,30 @@
   // array copy(shallow copy)
   const arrayCopy = [...array]
 
-  console.log('c.log ## array ##', array)
-  console.log('c.log ## arrayCopy ##', arrayCopy)
+  console.log(`c.log ## array ##`, array)
+  console.log(`c.log ## arrayCopy ##`, arrayCopy)
 
   const arrayCopy2 = [...array, { key: 'key3' }]
   obj1.key = 'newKey'
-  console.log('c.log ## arrayCopy ##', arrayCopy2)
-  console.log('c.log ## arrayCopy2 ##', arrayCopy2)
+  console.log(`c.log ## arrayCopy ##`, arrayCopy2)
+  console.log(`c.log ## arrayCopy2 ##`, arrayCopy2)
 
   // object copy
   const obj3 = { ...obj1 }
-  console.log('c.log ## obj3 ##', obj3)
+  console.log(`c.log ## obj3 ##`, obj3)
 
   // array concatenation
   const fruits1 = ['peach', 'strawberry']
   const fruits2 = ['banana', 'kiwi']
   const fruits = [...fruits1, ...fruits2]
-  console.log('c.log ## fruits ##', fruits)
+  console.log(`c.log ## fruits ##`, fruits)
 
   // object merge
   // Note: If keys are the same, they will be overwritten.
   const dog1 = { dog1: 'dog1Value' }
   const dog2 = { dog2: 'dog2Value' }
   const dog = { ...dog1, ...dog2 }
-  console.log('c.log ## dog ##', dog)
+  console.log(`c.log ## dog ##`, dog)
 }
 
 /**
@@ -107,7 +107,7 @@
  */
 {
   function printMessage(message) {
-    console.log('c.log ## message ##', message)
+    console.log(`c.log ## message ##`, message)
   }
   printMessage('hello')
   printMessage() // undefined
@@ -115,7 +115,7 @@
 
 {
   function printMessage(message = 'default message') {
-    console.log('c.log ## message ##', message)
+    console.log(`c.log ## message ##`, message)
   }
   printMessage('hi')
   printMessage()
@@ -129,7 +129,7 @@
 {
   const isCat = true
   const component = isCat ? 'cat' : 'dog'
-  console.log('c.log ## component ##', component)
+  console.log(`c.log ## component ##`, component)
 }
 
 // ES11
@@ -183,36 +183,36 @@
 {
   const name = 'Jisung'
   const userName = name || 'Guest'
-  console.log('c.log ## userName ##', userName)
+  console.log(`c.log ## userName ##`, userName)
 }
 
 {
   const name = null
   const userName = name || 'Guest'
-  console.log('c.log ## userName ##', userName)
+  console.log(`c.log ## userName ##`, userName)
 }
 
 // bug
 {
   const name = ''
   const userName = name || 'Guest'
-  console.log('c.log ## userName ##', userName)
+  console.log(`c.log ## userName ##`, userName)
 }
 
 // bug
 {
   const num = 0
   const message = num || 'undefined'
-  console.log('c.log ## message ##', message)
+  console.log(`c.log ## message ##`, message)
 }
 
 // Nullish coalescing operator
 {
   const name = ''
   const userName = name ?? 'Guest'
-  console.log('c.log ## userName ##', userName)
+  console.log(`c.log ## userName ##`, userName)
 
   const num = 0
   const message = num ?? 'undefined'
-  console.log('c.log ## message ##', message)
+  console.log(`c.log ## message ##`, message)
 }

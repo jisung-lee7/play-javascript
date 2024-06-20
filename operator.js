@@ -4,8 +4,8 @@
  * ### String concatenation
  ****************************************************************************************************
  */
-console.log('hello' + ' javascript')
-console.log('1' + 2)
+console.log(`hello` + ` javascript`)
+console.log(`1` + 2)
 console.log(`string literals: 1 + 2 = ${1 + 2}`)
 
 /**
@@ -69,7 +69,7 @@ const value1 = true
 const value2 = 7 < 2
 function check() {
   for (let i = 0; i < 10; i++) {
-    console.log('wasting time')
+    console.log(`wasting time`)
   }
   return true
 }
@@ -125,7 +125,7 @@ console.log(`null === undefined -> ${null === undefined}`) // false
  */
 {
   const nPow = 2 ** 3
-  console.log('c.log ## nPow ##', nPow)
+  console.log(`c.log ## nPow ##`, nPow)
 }
 
 /**
@@ -136,11 +136,11 @@ console.log(`null === undefined -> ${null === undefined}`) // false
  */
 const testName = 'testIf'
 if (testName === 'testIf') {
-  console.log('testName = testIf')
+  console.log(`testName = testIf`)
 } else if (testName === 'testElseIf') {
-  console.log('testName = testElseIf')
+  console.log(`testName = testElseIf`)
 } else {
-  console.log('unknown')
+  console.log(`unknown`)
 }
 
 /**
@@ -162,14 +162,14 @@ console.log(testName === 'testIf' ? 'TRUE_VALUE' : 'FALSE_VALUE')
 const alpha = 'A'
 switch (alpha) {
   case 'A':
-    console.log('alpha case A')
+    console.log(`alpha case A`)
     break
   case 'B':
   case 'C':
-    console.log('alpha case B, C')
+    console.log(`alpha case B, C`)
     break
   default:
-    console.log('alpha default')
+    console.log(`alpha default`)
     break
 }
 
@@ -223,5 +223,5 @@ for (let i = 0; i < 10; i++) {
   if (i % 2 !== 0) {
     continue
   }
-  console.log('c.log ## i ##', i)
+  console.log(`c.log ## i ##`, i)
 }

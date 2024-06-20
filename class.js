@@ -31,8 +31,8 @@ class Person {
 }
 
 const jisung = new Person('jisung', 30)
-console.log('jisung.name:', jisung.name)
-console.log('jisung.age:', jisung.age)
+console.log(`jisung.name:`, jisung.name)
+console.log(`jisung.age:`, jisung.age)
 jisung.speak()
 
 /**
@@ -60,7 +60,7 @@ class User {
 }
 
 const user1 = new User('Jisung', 'Lee', -1)
-console.log('user1.age', user1.age)
+console.log(`user1.age`, user1.age)
 
 /**
  ****************************************************************************************************
@@ -122,7 +122,7 @@ class Rectangle extends Shape {}
 class Triangle extends Shape {
   draw() {
     super.draw()
-    console.log('small_red_triangle')
+    console.log(`small_red_triangle`)
   }
   getArea() {
     return (this.width * this.height) / 2

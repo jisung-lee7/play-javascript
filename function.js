@@ -14,6 +14,7 @@
  *     e.g., createCardAndPoint -> createCard, createPoint
  *   - function is object in JS
 */
+console.log(`\n[ Function(Function Declaration) ]`)
 
 function printHello() {
   console.log(`Hello`)
@@ -34,6 +35,8 @@ log('Hello')
  * Primitive parameters : passed by value
  * Object parameters : passed by reference
  */
+console.log(`\n[ Parameters ]`)
+
 function changeName(obj) {
   obj.name = 'JisungLee'
 }
@@ -46,6 +49,8 @@ console.log(jisung)
  * ### Default parameters (added in ES6)
  ****************************************************************************************************
  */
+console.log(`\n[ Default parameters (added in ES6) ]`)
+
 function showMessage(message, from = 'unknown') {
   console.log(`${message} by ${from}`)
 }
@@ -53,9 +58,31 @@ showMessage('Hi')
 
 /**
  ****************************************************************************************************
+ * ### Arguments (Rarely used, recommend 'Rest parameters')
+ ****************************************************************************************************
+ * Access all arguments passed to a function
+ * A local variable available within a function
+ * Array like object.
+ * Does not have built-in array methods(like forEach, map, ...)
+ */
+console.log(`\n[ Arguments ]`)
+
+function showName(name) {
+  console.log(`c.log ## arguments ##`, arguments)
+  console.log(`c.log ## arguments.length ##`, arguments.length)
+  console.log(`c.log ## arguments[0] ##`, arguments[0])
+  console.log(`c.log ## arguments[1] ##`, arguments[1])
+}
+showName('Jisung', 'Jenny')
+
+/**
+ ****************************************************************************************************
  * ### Rest parameters (added in ES6)
  ****************************************************************************************************
+ *
  */
+console.log(`\n[ Rest parameters (added in ES6) ]`)
+
 function printAll(...args) {
   for (let i = 0; i < args.length; i++) {
     console.log(`c.log ## args[i] ##`, args[i])
@@ -75,6 +102,8 @@ printAll('js', 'kurt', 'JisungLee')
  * A function declaration can be called earlier than it is defined. (hoisted)
  * A function expression is created when the execution reaches it.
  */
+console.log(`\n[ Function expression ]`)
+
 function sum(a, b) {
   return a + b
 }
@@ -95,6 +124,8 @@ console.log(sumAgain(1, 3))
  * ### Callback function using function expression
  ****************************************************************************************************
  */
+console.log(`\n[ Callback function using function expression ]`)
+
 function randomQuiz(answer, yesCallback, noCallback) {
   if (answer === 'helloworld') {
     yesCallback()
@@ -128,6 +159,8 @@ randomQuiz('helloworld', printYes, printNo)
    (In a browser environment, the global object is 'window')
 
  */
+console.log(`\n[ Arrow function ]`)
+
 const simplePrint = () => console.log(`simplePrint!`)
 const add = (a, b) => a + b
 const simpleMultiply = (a, b) => {
@@ -161,6 +194,7 @@ const simpleMultiply = (a, b) => {
  * ### IIFE(Immediately Invoked Function Expression)
  ****************************************************************************************************
  */
+console.log(`\n[ IIFE(Immediately Invoked Function Expression) ]`)
 ;(function hello() {
   console.log(`IIFE`)
 })()

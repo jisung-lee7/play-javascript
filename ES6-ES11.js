@@ -4,6 +4,8 @@
  * ### Shorthand property names
  ****************************************************************************************************
  */
+console.log(`\n[ Shorthand property names ]`)
+
 {
   const objName = 'Jisung'
   const objAge = '10'
@@ -25,7 +27,10 @@
  ****************************************************************************************************
  * ### Destructuring assignment
  ****************************************************************************************************
+ * Desturcturing assignment syntax is an expression that allows you to unpack values from arrays or properties from objects into variables.
  */
+console.log(`\n[ Destructuring assignment ]`)
+
 {
   const student = {
     name: 'Kay',
@@ -65,26 +70,80 @@
  * ### Spread Syntax
  ****************************************************************************************************
  */
+console.log(`\n[ Spread Syntax ]`)
+
 {
+  // Array copy
   const obj1 = { key: 'key1' }
   const obj2 = { key: 'key2' }
   const array = [obj1, obj2]
-
-  // array copy(shallow copy)
-  const arrayCopy = [...array]
-
   console.log(`c.log ## array ##`, array)
+
+  const arrayCopy = [...array]
   console.log(`c.log ## arrayCopy ##`, arrayCopy)
 
   const arrayCopy2 = [...array, { key: 'key3' }]
-  obj1.key = 'newKey'
-  console.log(`c.log ## arrayCopy ##`, arrayCopy2)
   console.log(`c.log ## arrayCopy2 ##`, arrayCopy2)
+}
 
-  // object copy
+// Array copy(Shallow copy)
+{
+  const obj1 = { key: 'key1' }
+  const obj2 = { key: 'key2' }
+
+  const array = [obj1, obj2]
+  const arrayCopy = [...array]
+
+  obj1.key = 'newKey'
+
+  console.log(`c.log ## array(Shallow copy) ##`, array)
+  console.log(`c.log ## arrayCopy(Shallow copy) ##`, arrayCopy)
+}
+
+// Array copy(Deep copy)
+{
+  function deepCopy(obj) {
+    if (obj === null || typeof obj !== 'object') {
+      return obj
+    }
+
+    if (Array.isArray(obj)) {
+      let arrCopy = []
+      obj.forEach((item, index) => {
+        arrCopy[index] = deepCopy(item)
+      })
+      return arrCopy
+    }
+
+    let objCopy = {}
+    Object.keys(obj).forEach((key) => {
+      objCopy[key] = deepCopy(obj[key])
+    })
+    return objCopy
+  }
+
+  const obj1 = { key: 'key1' }
+  const obj2 = { key: 'key2' }
+
+  const array = [obj1, obj2]
+  const arrayCopy = deepCopy(array)
+
+  obj1.key = 'newKey'
+
+  console.log(`c.log ## array(Deep copy) ##`, array)
+  console.log(`c.log ## arrayCopy(Deep copy) ##`, arrayCopy)
+}
+
+// object copy
+{
+  const obj1 = { key: 'key1' }
   const obj3 = { ...obj1 }
-  console.log(`c.log ## obj3 ##`, obj3)
 
+  console.log(`c.log ## obj1 ##`, obj1)
+  console.log(`c.log ## obj3 ##`, obj3)
+}
+
+{
   // array concatenation
   const fruits1 = ['peach', 'strawberry']
   const fruits2 = ['banana', 'kiwi']
@@ -105,6 +164,8 @@
  ****************************************************************************************************
  * Default parameter is only for undefined
  */
+console.log(`\n[ Default parameters ]`)
+
 {
   function printMessage(message) {
     console.log(`c.log ## message ##`, message)
@@ -126,6 +187,8 @@
  * ### Ternary operator
  ****************************************************************************************************
  */
+console.log(`\n[ Ternary operator ]`)
+
 {
   const isCat = true
   const component = isCat ? 'cat' : 'dog'
@@ -138,6 +201,8 @@
  * ### Optional chaining
  ****************************************************************************************************
  */
+console.log(`\n[ Optional chaining ]`)
+
 {
   const person1 = {
     name: 'Jisung',
@@ -180,6 +245,8 @@
  * leftExpr || rightExpr
  * falsy : false, '', "", ``, 0, -0, null, undefined, NaN
  */
+console.log(`\n[ Nullish coalescing operator ]`)
+
 {
   const name = 'Jisung'
   const userName = name || 'Guest'

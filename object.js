@@ -319,3 +319,210 @@ console.log(`\n[ Object methods ]`)
   const objectFromEntries = Object.fromEntries(arr)
   console.log(`c.log ## objectFromEntries ##`, objectFromEntries)
 }
+
+/**
+ ****************************************************************************************************
+ * ### Prototype
+ ****************************************************************************************************
+ */
+console.log(`\n[ Prototype ]`)
+
+{
+  const user = {
+    name: 'Jisung'
+  }
+  console.log(`c.log ## user.name ##`, user.name)
+
+  console.log(
+    `c.log ## user.hasOwnProperty('name') ##`,
+    user.hasOwnProperty('name')
+  )
+  console.log(
+    `c.log ## user.hasOwnProperty('age') ##`,
+    user.hasOwnProperty('age')
+  )
+}
+
+{
+  const user = {
+    name: 'Jisung',
+    hasOwnProperty: function () {
+      console.log(`c.log ## haha ##`)
+    }
+  }
+
+  console.log(`c.log ## user.hasOwnProperty() ##`, user.hasOwnProperty())
+}
+
+{
+  // const bmw = {
+  //   color: 'red',
+  //   wheels: 4,
+  //   navigation: 1,
+  //   drive() {
+  //     console.log(`c.log ## drive.. ##`)
+  //   }
+  // }
+  //
+  // const benz = {
+  //   color: 'black',
+  //   wheels: 4,
+  //   drive() {
+  //     console.log(`c.log ## drive.. ##`)
+  //   }
+  // }
+  //
+  // const audi = {
+  //   color: 'blue',
+  //   wheels: 4,
+  //   drive() {
+  //     console.log(`c.log ## drive.. ##`)
+  //   }
+  // }
+
+  const car = {
+    wheels: 4,
+    drive() {
+      console.log(`c.log ## run drive().. ##`)
+    }
+  }
+
+  const bmw = {
+    color: 'red',
+    navigation: 1
+  }
+
+  const benz = {
+    color: 'black'
+  }
+
+  const audi = {
+    color: 'blue'
+  }
+
+  bmw.__proto__ = car
+  benz.__proto__ = car
+  audi.__proto__ = car
+
+  console.log(`c.log ## bmw ##`, bmw)
+  console.log(`c.log ## benz ##`, benz)
+  console.log(`c.log ## audi ##`, audi)
+
+  console.log(`c.log ## bmw.wheels ##`, bmw.wheels)
+  audi.drive()
+
+  const hyundai = {
+    color: 'white',
+    name: 'elantra'
+  }
+
+  hyundai.__proto__ = bmw
+
+  console.log(`c.log ## hyundai.wheels ##`, hyundai.wheels)
+  hyundai.drive()
+
+  for (const objTest in hyundai) {
+    console.log(`c.log ## objTest ##`, objTest)
+  }
+
+  console.log(`c.log ## hyundai ##`, hyundai)
+  Object.keys(hyundai)
+  Object.values(hyundai)
+}
+
+{
+  // const car = {
+  //   wheels: 4,
+  //   drive() {
+  //     console.log(`c.log ## run drive().. ##`)
+  //   }
+  // }
+
+  const Bmw = function (color) {
+    this.color = color
+  }
+
+  const x5 = new Bmw('red')
+  const z4 = new Bmw('blue')
+
+  // x5.__proto__ = car
+  // z4.__proto__ = car
+
+  console.log(`c.log ## x5 ##`, x5)
+  console.log(`c.log ## z4 ##`, z4)
+
+  // z4.constructor === Bmw true
+  Bmw.prototype.wheels = 4
+  Bmw.prototype.drive = function () {
+    console.log(`c.log ## run drive().. ##`)
+  }
+  Bmw.prototype.navigation = 1
+  Bmw.prototype.stop = function () {
+    console.log(`c.log ## run stop().. ##`)
+  }
+
+  console.log(`c.log ## z4.constructor === Bmw ##`, z4.constructor === Bmw) // true
+  console.log(`c.log ## x5.navigation ##`, x5.navigation)
+  z4.stop()
+}
+
+{
+  const Bmw = function (color) {
+    this.color = color
+  }
+
+  // z4.constructor === Bmw false
+  Bmw.prototype = {
+    wheels: 4,
+    drive() {
+      console.log(`c.log ## run drive().. ##`)
+    },
+    navigation: 1,
+    stop() {
+      console.log(`c.log ## run stop().. ##`)
+    }
+  }
+  const x5 = new Bmw('red')
+  const z4 = new Bmw('blue')
+
+  console.log(`c.log ## x5 ##`, x5)
+  console.log(`c.log ## z4 ##`, z4)
+
+  console.log(`c.log ## z4.constructor === Bmw ##`, z4.constructor === Bmw) // false
+}
+
+{
+  const Bmw = function (color) {
+    this.color = color
+  }
+
+  // z4.constructor === Bmw true
+  Bmw.prototype = {
+    constructor: Bmw,
+    wheels: 4,
+    drive() {
+      console.log(`c.log ## run drive().. ##`)
+    },
+    navigation: 1,
+    stop() {
+      console.log(`c.log ## run stop().. ##`)
+    }
+  }
+  const x5 = new Bmw('red')
+  const z4 = new Bmw('blue')
+
+  console.log(`c.log ## z4.constructor === Bmw ##`, z4.constructor === Bmw) // true
+}
+
+// use closure
+{
+  const Bmw = function (colorParam) {
+    const color = colorParam
+    this.getColor = function () {
+      console.log(`c.log ## color ##`, color)
+    }
+  }
+  const x5 = new Bmw('red')
+
+  x5.getColor()
+}

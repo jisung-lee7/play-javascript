@@ -18,11 +18,42 @@
  ****************************************************************************************************
  * stringify
  */
-let json = JSON.stringify(true)
-console.log(`c.log ## json ##`, json)
+console.log(`\n[ Object to JSON ]`)
+{
+  let json = JSON.stringify(true)
+  console.log(`c.log ## json ##`, json)
 
-json = JSON.stringify(['apple', 'banana'])
-console.log(`c.log ## json ##`, json)
+  json = JSON.stringify(['apple', 'banana'])
+  console.log(`c.log ## json ##`, json)
+
+  const rabbit = {
+    name: 'ppoddo',
+    color: 'white',
+    size: null,
+    birthDate: new Date(),
+    jump: function () {
+      console.log(`${this.name} can jump!`)
+    }
+  }
+  json = JSON.stringify(rabbit)
+  console.log(`c.log ## json ##`, json)
+
+  json = JSON.stringify(rabbit, ['name', 'color'])
+  console.log(`c.log ## json ##`, json)
+
+  json = JSON.stringify(rabbit, (key, value) => {
+    return key === 'name' ? 'jisung' : value
+  })
+  console.log(`c.log ## json ##`, json)
+}
+
+/**
+ ****************************************************************************************************
+ * ### JSON to Object
+ ****************************************************************************************************
+ * parse(json)
+ */
+console.log(`\n[ JSON to Object ]`)
 
 const rabbit = {
   name: 'ppoddo',
@@ -33,24 +64,8 @@ const rabbit = {
     console.log(`${this.name} can jump!`)
   }
 }
-json = JSON.stringify(rabbit)
-console.log(`c.log ## json ##`, json)
 
-json = JSON.stringify(rabbit, ['name', 'color'])
-console.log(`c.log ## json ##`, json)
-
-json = JSON.stringify(rabbit, (key, value) => {
-  return key === 'name' ? 'jisung' : value
-})
-console.log(`c.log ## json ##`, json)
-
-/**
- ****************************************************************************************************
- * ### JSON to Object
- ****************************************************************************************************
- * parse(json)
- */
-json = JSON.stringify(rabbit)
+let json = JSON.stringify(rabbit)
 console.log(`c.log ## json ##`, json)
 
 const obj = JSON.parse(json, (key, value) => {

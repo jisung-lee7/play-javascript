@@ -2,12 +2,11 @@
 
 /**
  ****************************************************************************************************
- * ### callback
+ * ### Callback
  ****************************************************************************************************
-
  * JavaScript is synchronous.
  * Execute the code block in order after hoisting.
- * Synchronous : Execute code in order
+ * Synchronous  : Execute code in order
  * Asynchronous : Unpredictable when code will run
  */
 
@@ -20,23 +19,43 @@ console.log(`3`)
  * ### Synchronous callback
  ****************************************************************************************************
  */
-function printImmediately(callback) {
-  callback()
+{
+  function printImmediately(callback) {
+    callback()
+  }
+
+  {
+    // callback 1
+    function callbackTest() {
+      console.log(`hello`)
+    }
+    printImmediately(callbackTest)
+  }
+
+  {
+    // callback 2 - remove name of function
+    printImmediately(function () {
+      console.log(`hello`)
+    })
+  }
+
+  {
+    // callback 3 - modify anonymous to arrow
+    printImmediately(() => console.log(`hello`))
+  }
 }
 
-// callback 1
-function callbackTest() {
-  console.log(`hello 1`)
+{
+  function doRepeat(count, callback) {
+    for (let i = 0; i < count; i++) {
+      callback(i)
+    }
+  }
+
+  doRepeat(3, (i) => {
+    console.log(i)
+  })
 }
-printImmediately(callbackTest)
-
-// callback 2
-printImmediately(function () {
-  console.log(`hello 2`)
-})
-
-// callback 3
-printImmediately(() => console.log(`hello 3`))
 
 /**
  ****************************************************************************************************

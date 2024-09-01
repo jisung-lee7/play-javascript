@@ -9,7 +9,7 @@
  * Function declarations can be called from anywhere. The reason is due to hoisting.
 
  * Function declaration
- *   - function name(param1, param2) { body... return;}
+ *   - function name(param1, param2) { body... return; }
  *   - one function === one thing
  *     e.g., createCardAndPoint -> createCard, createPoint
  *   - function is object in JS
@@ -17,36 +17,38 @@
 console.log(`\n[ Function(Function Declaration) ]`)
 
 {
-  function printHello() {
-    console.log(`Hello`)
-  }
-
-  printHello()
+  // function printHello() {
+  //   console.log(`Hello`)
+  // }
+  //
+  // printHello()
 }
 
 {
-  function log(message) {
-    console.log(message)
-  }
-
-  log('Hello')
+  // function log(message) {
+  //   console.log(message)
+  // }
+  //
+  // log('Hello')
 }
 /**
  ****************************************************************************************************
  * ### Parameters
  ****************************************************************************************************
  * Primitive parameters : passed by value
- * Object parameters : passed by reference
+ * Object parameters    : passed by reference
  */
 console.log(`\n[ Parameters ]`)
 
 {
-  function changeName(obj) {
-    obj.name = 'JisungLee'
-  }
-  const jisung = { name: 'jisung' }
-  changeName(jisung)
-  console.log(jisung)
+  // function changeName(obj) {
+  //   obj.name = 'JisungLee'
+  // }
+  // const jisung = { name: 'jisung' }
+  //
+  // changeName(jisung)
+  //
+  // console.log(jisung)
 }
 
 /**
@@ -57,10 +59,10 @@ console.log(`\n[ Parameters ]`)
 console.log(`\n[ Default parameters (added in ES6) ]`)
 
 {
-  function showMessage(message, from = 'unknown') {
-    console.log(`${message} by ${from}`)
-  }
-  showMessage('Hi')
+  // function showMessage(message, from = 'unknown') {
+  //   console.log(`${message} by ${from}`)
+  // }
+  // showMessage('Hi')
 }
 
 /**
@@ -113,6 +115,7 @@ console.log(`\n[ Rest parameters (added in ES6) ]`)
  * What is diff? (Function declaration vs Function expression)
  * A function declaration can be called earlier than it is defined. (hoisted)
  * A function expression is created when the execution reaches it.
+ * Anonymous function
  */
 console.log(`\n[ Function expression ]`)
 

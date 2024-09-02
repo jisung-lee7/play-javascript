@@ -6,7 +6,7 @@
  * One of the JavaScript's data types.
  * A collection of related data and/or functionality.
  * Nearly all objects in JavaScript are instances of Object
- * Object = { key : value };
+ * Object = { key: value };
  */
 
 /**
@@ -98,8 +98,9 @@ console.log(`\n[ Computed properties ]`)
   console.log(`c.log ## objTest.hasJob ##`, objTest.hasJob)
 
   function printValue(objParam, keyParam) {
-    console.log(objParam.keyParam) // undefined, the reason is objParam doesn't have key: keyParam
-    console.log(objParam[keyParam]) // computed properties
+    console.log(`c.log ## objParam ##`, objParam)
+    console.log(`c.log ## objParam.keyParam ##`, objParam.keyParam) // it returns will undefined, the reason is objParam doesn't have literally key: keyParam
+    console.log(`c.log ## objParam[keyParam] ##`, objParam[keyParam]) // it returns will 'jisung', it is computed properties
   }
 
   printValue(objTest, 'name')

@@ -268,4 +268,70 @@ doRepeat(3, (i) => { // it returns 0, 2, 4
    - Block scope: The scope created with a pair of curly braces (a block).
 <br><br>
 
+## :label: Object
+- One of the JavaScript's data types.
+- A collection of related data and/or functionality.
+- Nearly all objects in JavaScript are instances of Object
+```js
+obj = { key: value }
+```
+<br>
 
+- How to use object?
+```js
+const objectLiteral = {} // 'object literal' syntax
+const objectConstructor = new Object() // 'object constructor' syntax
+```
+<br>
+
+### Object property
+- A JavaScript property is a member of an object that associates a key with a value. 
+```js
+const obj = {
+  a: 1,
+  b() {}
+}
+```
+<br>
+
+- JavaScript, as a dynamically typed language, allows you to add properties later and also delete it later.
+```js
+const objTest = { name: 'jisung', age: 20 }
+
+objTest.hasJob = true
+console.log(objTest.hasJob) // it returns will jisung
+
+delete objTest.hasJob
+console.log(objTest.hasJob) // it returns will undefined
+```
+<br>
+
+### Computed property
+```js
+const objTest = { name: 'jisung', age: 20 }
+
+console.log(objTest.name) // it returns will jisung
+console.log(objTest['name']) // it returns will jisung
+console.log(objTest['age']) // it returns will 20
+
+objTest['hasJob'] = true
+console.log(objTest.hasJob) // it returns will true
+
+function printValue(objParam, keyParam) {
+  console.log(objParam) // it returns will objTest
+  console.log(objParam.keyParam) // it returns will undefined, the reason is objParam doesn't have literally key: keyParam
+  console.log(objParam[keyParam]) // it returns will 'jisung', it is computed properties
+  }
+
+printValue(objTest, 'name')
+```
+<br>
+
+### In operator: property existence check (key in obj)
+```js
+const obj = { name: 'jisung', age: 20 }
+
+console.log('name' in obj)   // it returns true
+console.log('random' in obj) // it returns false
+```
+<br>

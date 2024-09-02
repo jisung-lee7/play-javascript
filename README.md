@@ -362,4 +362,35 @@ const arr3 = [
 ```
 <br>
 
+## :label: Truthy and Falsy
+### Truthy
+- In JavaScript, a truthy value is a value that is considered true when encountered in a Boolean context.
+- All values are truthy unless they are defined as falsy. 
+<br><br>
+
+### Falsy
+- A falsy (sometimes written falsey) value is a value that is considered false when encountered in a Boolean context.
+```js
+if (null || undefined || false || NaN || 0 || -0 || 0n || '') {
+  console.log('Falsy')
+}
+```
+<br>
+
+### When should we use it?
+```js
+function testFunc(obj) {
+  // if (obj === undefined || obj === null) {
+  if (!obj) { // falsy
+    console.log('There is no obejct')
+    return
+  }
+  console.log(person.name)
+}
+
+const person = null
+testFunc(person)
+```
+<br>
+
 

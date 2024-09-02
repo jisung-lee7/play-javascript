@@ -277,7 +277,7 @@ obj = { key: value }
 ```
 <br>
 
-- How to use object?
+- How to declare object?
 ```js
 const objectLiteral = {} // 'object literal' syntax
 const objectConstructor = new Object() // 'object constructor' syntax
@@ -335,3 +335,31 @@ console.log('name' in obj)   // it returns true
 console.log('random' in obj) // it returns false
 ```
 <br>
+
+## :label: Array
+- An array is an ordered collection of data (either primitive or object depending upon the language). 
+- Arrays are used to store multiple values under a single variable name. 
+- A regular variable, on the other hand, can store only one value.
+- Each item in an array has a number attached to it, called a numeric index, that allows you to access it. 
+- In JavaScript, arrays start at index zero and can be manipulated with various methods.
+- How to declare array?
+```js
+const arr1 = [1, 2] // 'array literal' syntax
+const arr2 = new Array() // 'array constructor' syntax
+const arr3 = [ 
+  // An array can include string, number, object, function
+  'Jisung',
+  7,
+  true,
+  {
+    name: 'Lee',
+    age: '30'
+  },
+  function () {
+    console.log(`TEST`)
+  }
+]
+```
+<br>
+
+

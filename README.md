@@ -577,3 +577,122 @@ testFunc(person)
   test('one', 'two', ...arr1, ...arr2) // spread syntax
 }
 ```
+<br>
+
+## :label: Shallow copy and Deep copy
+### Shallow copy
+- A shallow copy of an object is a copy whose properties share the same references (point to the same underlying values) as those of the source object from which the copy was made. 
+- As a result, when you change either the source or the copy, you may also cause the other object to change too. 
+- That behavior contrasts with the behavior of a deep copy, in which the source and copy are completely independent.
+- The copy of an object whose properties all have primitive values fits the definition of both a deep copy and a shallow copy.
+- For shallow copies, only the top-level properties are copied, not the values of nested objects. Therefore:
+   - Re-assigning top-level properties of the copy does not affect the source object.
+   - Re-assigning nested object properties of the copy does affect the source object.
+
+- In JavaScript, standard built-in object-copy operations (spread syntax, Array.prototype.concat(), Array.prototype.slice(), Array.from(), and Object.assign()) do not create deep copies (instead, they create shallow copies).
+
+### Deep copy
+- A deep copy of an object is a copy whose properties do not share the same references (point to the same underlying values) as those of the source object from which the copy was made. 
+- As a result, when you change either the source or the copy, you can be assured you're not causing the other object to change too. 
+- That behavior contrasts with the behavior of a shallow copy, in which changes to nested properties in the source or the copy may cause the other object to change too.
+
+```js
+// shallow copy
+{
+  // array
+  const arr1 = [1, 2]
+  const arr2 = arr1
+
+  console.log(arr1 === arr2) // Expected output: true
+
+  console.log(arr1) // Expected output: [1, 2]
+  console.log(arr2) // Expected output: [1, 2]
+
+  arr1[0] = 7
+
+  console.log(arr1) // Expected output: [7, 2]
+  console.log(arr2) // Expected output: [7, 2]
+}
+
+{
+  // using spread syntax in array
+  const arr1 = [1, 2]
+  const arr2 = [...arr1]
+
+  console.log(arr1 === arr2) // Expected output: false
+
+  console.log(arr1) // Expected output: [1, 2]
+  console.log(arr2) // Expected output: [1, 2]
+
+  arr1[0] = 7
+
+  console.log(arr1) // Expected output: [7, 2]
+  console.log(arr2) // Expected output: [1, 2]
+}
+
+{
+  // using spread syntax to array in array
+  const arr1 = [1, 2, [3, 4]]
+  const arr2 = [...arr1]
+
+  console.log(arr1 === arr2) // Expected output: false
+
+  console.log(arr1) // Expected output: [1, 2, [3, 4]]
+  console.log(arr2) // Expected output: [1, 2, [3, 4]]
+
+  arr1[2][0] = 7
+
+  console.log(arr1) // Expected output: [1, 2, [7, 4]]
+  console.log(arr2) // Expected output: [1, 2, [7, 4]]
+}
+
+{
+  // array in array
+  const arr1 = [1, 2, [3, 4]]
+  const arr2 = arr1
+
+  console.log(arr1 === arr2) // Expected output: true
+
+  console.log(arr1) // Expected output: [1, 2, [3, 4]]
+  console.log(arr2) // Expected output: [1, 2, [3, 4]]
+
+  arr1[2][0] = 7
+
+  console.log(arr1) // Expected output: [1, 2, [7, 4]]
+  console.log(arr2) // Expected output: [1, 2, [7, 4]]
+}
+
+{
+  // object in array
+  const arr1 = [1, 2, { key1: 'value1' }]
+  const arr2 = arr1
+
+  console.log(arr1 === arr2) // Expected output: true
+
+  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value1' } ]
+  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value1' } ]
+
+  arr1[2].key1 = 'value2'
+
+  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value2' } ]
+  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value2' } ]
+}
+
+{
+  // using spread syntax to object in array
+  const arr1 = [1, 2, { key1: 'value1' }]
+  const arr2 = [...arr1]
+
+  console.log(arr1 === arr2) // Expected output: false
+
+  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value1' }j ]
+  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value1' } ]
+
+  arr1[2].key1 = 'value2'
+
+  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value2' } ]
+  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value2' } ]
+}
+```
+<br>
+

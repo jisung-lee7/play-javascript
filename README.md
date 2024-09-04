@@ -3,6 +3,19 @@
 My personal playground for javascript coding and learning.
 
 ## :pushpin: Summary
+### Table of contents
+---
+- [Variable](#label-variable)
+- [Operator](#label-operator)
+- [Function](#label-function)
+- [Scope](#label-scope)
+- [Object](#label-object)
+- [Array](#label-array)
+- [Truthy and falsy](#label-truthy-and-falsy)
+- [Destructuring assignment](#label-destructuring-assignment)
+- [Spread syntax and Rest argument](#label-spread-syntax-and-rest-argument)
+- [Shallow copy and Deep copy](#label-shallow-copy-and-deep-copy)
+
 ## :label: Variable
 - A variable is a named reference to a value. That way an unpredictable value can be accessed through a predetermined name.
 <br><br>

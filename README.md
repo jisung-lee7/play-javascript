@@ -21,11 +21,35 @@ My personal playground for javascript coding and learning.
 <br><br>
 - 'var' - don't ever use this
    - 'var' has no block scope, it has function-scope
+      ```javascript
+      function test() {
+          if (true) {
+              var x = 10; 
+          }
+          console.log(x); // Expected output: 10
+      }
+      
+      test();
+      ```
+<br>
+
+#### (added in ES6)
+- 'let' - rw(read/write)  
+   - Only use 'let' if variable needs to change.
 <br><br>
-- Hoisting
-   - move declaration from bottom to top anywhere within the scope(Only declaration, NOT assignments)
-   - 'let' and 'constant' are also hoisted, but they cause an error because TDZ(Temporal Dead Zone)
-   - It just can't be used before assignments.
+- 'constant' - r(read only)
+   - Use const whenever possible.
+<br><br>
+- Favor immutable data type always for a few reasons:
+   - Security
+   - Thread safety
+   - Reduce human mistakes
+<br><br>
+
+### Hoisting
+- Move declaration from bottom to top anywhere within the scope(Only declaration, NOT assignments)
+- 'let' and 'const' are also hoisted, but accessing them before initialization will cause a ReferenceError due to the TDZ (Temporal Dead Zone).
+- They cannot be accessed before initialization.
 <br><br>
 
 ### The process of variable creation
@@ -39,56 +63,42 @@ My personal playground for javascript coding and learning.
    3. Assignment
 <br><br>
 - constant(block-scoped)
-   1. Declaration
-   2. Initialization
-   3. Assignment
+   1. Declaration and Initialization and Assignment.
 <br><br>
 
 ### Data types
 - Immutable(Single item)
-   - primitive types(number, string, boolean, null, undefined, symbol), frozen objects (e.g., object.freeze())
+   - primitive types(number, string, boolean, null, undefined, symbol)
+   - The memory value cannot be modified.
+<br><br>
+   - number
+      - integer, decimal number
+      - special numeric values(infinity, -infinity, NaN)
+<br><br>
+   - string
+      - In any computer programming language, a string is a sequence of characters used to represent text.
+<br><br>
+   - boolean
+      - false: 0, null, undefined, NaN, ''
+      - true: any other value
+<br><br>
+   - null
+      - If you can check null using typeof, it returns object.
+      - This is a bug that type is object in the early version of JavaScript. It is not fixed to maintain backward compatibility.
+         ```javascript
+         console.log(typeof null) // expected output: object
+         ```
+      <br>
+   - undefined
+      - Automatically assigned to variables that have just been declared or to formal arguments for which there are no actual arguments.
+<br><br>
+   - symbol
+      - create unique identifiers for objects.
+      - Do not use 'new'.
 <br><br>
 - Mutable(Box container by building single items)
    - all objects(Object, Array, Function, RegexExp) by default are mutable in JS
-<br><br>
-- number
-   - integer, decimal number
-   - special numeric values(infinity, -infinity, NaN)
-<br><br>
-- string
-   - In any computer programming language, a string is a sequence of characters used to represent text.
-<br><br>
-- boolean
-   - false: 0, null, undefined, Nan, ''
-   - true: any other value
-<br><br>
-- null
-   - If you can check null using typeof, it returns object.
-   - This is a bug that type is object in the early version of JavaScript. It is not fixed to maintain backward compatibility.
-```js
-console.log(typeof null) // it will returns object
-```
-<br>
-
-- undefined
-   - Automatically assigned to variables that have just been declared or to formal arguments for which there are no actual arguments.
-<br><br>
-- symbol
-   - create unique identifiers for objects.
-   - Do not use 'new'.
-<br><br>
-
-#### (added in ES6)
-- 'let' - rw(read/write)  
-   - Only use 'let' if variable needs to change.
-<br><br>
-- 'constant' - r(read only)
-   - Use const whenever possible.
-<br><br>
-- Favor immutable data type always for a few reasons:
-   - Security
-   - Thread safety
-   - Reduce human mistakes
+   - The memory value can be modified.
 <br><br>
 
 ### Type conversion(Type Casting)

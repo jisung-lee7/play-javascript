@@ -289,12 +289,20 @@ doRepeat(3, (i) => { // Expected output: 0, 2, 4
 - If a variable or expression is not in the current scope, it will not be available for use. 
 - Scopes can also be layered in a hierarchy, so that child scopes have access to parent scopes, but not vice versa.
 - JavaScript has the following kinds of scopes:
-   - Global scope: The default scope for all code running in script mode.
-   - Module scope: The scope for code running in module mode.
-   - Function scope: The scope created with a function.
+   - Global scope
+      - The default scope for all code running in script mode. 
+      - Variables and functions declared in the global scope are accessible throughout the entire script.
+   - Module scope
+      - The scope for code running in module mode (ES6 modules). 
+      - Variables and functions declared in a module are only accessible within that module unless explicitly exported.
+   - Function scope
+      - The scope created with a function. 
+      - Variables declared within a function are accessible only within that function.
 <br><br>
 - In addition, identifiers declared with certain syntaxes, including let, const, class, or (in strict mode) function, can belong to an additional scope:
-   - Block scope: The scope created with a pair of curly braces (a block).
+   - Block scope
+      - The scope created with a pair of curly braces (`{}`). 
+      - Variables declared with `let` and `const` are limited to the block in which they are defined.
 <br><br>
 
 ## :label: Object

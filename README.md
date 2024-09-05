@@ -112,13 +112,13 @@ My personal playground for javascript coding and learning.
 ## :label: Operator
 ### Assignment operator
 - The assignment (=) operator is used to assign a value to a variable or property.
-```js
+```javascript
 let x = 1
 ```
 <br>
 
 ### Numeric operators
-```js
+```javascript
 console.log(1 + 1)  // add
 console.log(1 - 1)  // subtract
 console.log(1 / 1)  // divide
@@ -129,13 +129,13 @@ console.log(1 ** 1) // exponentiation, power
 <br>
 
 ### Compound assignment operators
-```js
+```javascript
 +=, -=, *=, /=
 ```
 <br>
 
 ### Increment and decrement operators
-```js
+```javascript
 ++, --
 ```
 <br>
@@ -143,18 +143,12 @@ console.log(1 ** 1) // exponentiation, power
 ### Logical operators: || (or), && (and), ! (not)
 #### || (or)
 - leftExpr || rightExpr
-   - if leftExpr === falsy, it returns rightExpr - using Nullish coalescing operator is better because of falsy
-   - if leftExpr === truthy and rightExpr === truthy, it returns leftExpr
-- that means finds the first truthy value
+   - That means finds the first truthy value
 <br><br>
 
 #### && (and)
 - leftExpr && rightExpr
-   - if leftExpr === truthy, it returns rightExpr
-   - if leftExpr === truthy and rightExpr === truthy, it returns rightExpr
-- that means finds the first falsy value
-<br><br>
-- We can also use it for short-circuit evaluation.
+   - That means finds the first falsy value
 <br><br>
 
 ### Nullish coalescing operator - new(ES11)
@@ -164,9 +158,17 @@ console.log(1 ** 1) // exponentiation, power
    - When leftExpr and rightExpr !== null or undefined, it returns leftExpr
 <br><br>
 
+#### Short-circuit evaluation
+- We can use logical operators for short-circuit evaluation.
+   - As logical expressions are evaluated left to right, they are tested for possible "short-circuit" evaluation using the following rules:
+      - truthy || anything is short-circuit evaluated to the truthy value.
+      - falsy && anything is short-circuit evaluated to the falsy value.
+      - nonNullish ?? anything is short-circuit evaluated to the non-nullish value.
+<br><br>
+
 ### Ternary operator: ?
 - condition ? value1 : value2
-```js
+```javascript
 const isCat = true
 const component = isCat ? 'cat' : 'dog'
 
@@ -175,7 +177,7 @@ console.log(component)
 <br>
 
 ### Comparison operators
-```js
+```javascript
 console.log('10 <  7', 10 <  7) // less than
 console.log('10 <= 7', 10 <= 7) // less than or equal
 console.log('10 >  7', 10 >  7) // greater than
@@ -184,9 +186,9 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
 <br>
 
 ### Equality
-```js
-==  // loose equality
-=== // strict equality
+```javascript
+==  // loose equality, does not check type
+=== // strict equality, checks type
 ```
 <br>
 

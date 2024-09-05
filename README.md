@@ -548,7 +548,7 @@ testFunc(person)
 - In an object literal, the spread syntax enumerates the properties of an object and adds the key-value pairs to the object being created.
 <br><br>
 
-```js
+```javascript
 {
   // using spread syntax in array
   const arr1 = [1, 2, 3]
@@ -580,7 +580,7 @@ testFunc(person)
   const obj2 = { d: 3, e: 4 }
   const obj3 = { ...obj1, ...obj2 }
 
-  console.log(obj3) // Expected output: { a: 1, b: 2, d: 4, e: 5 }
+  console.log(obj3) // Expected output: { a: 1, b: 2, d: 3, e: 4 }
 }
 
 {
@@ -591,21 +591,21 @@ testFunc(person)
     console.log(one, two, three)
   }
 
-  test(...arr) // Expected output: [1, 2, undefined]
+  test(...arr) // Expected output: 1, 2, undefined
 }
 ```
 <br>
 
-### Rest argument
+### Rest parameters
 - The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
 <br><br>
 
-```js
+```javascript
 {
   const arr1 = [1, 2, 3]
   const arr2 = [4, 5, 6]
 
-  function test(ONE, TWO, ...rest) { // using rest argument in function
+  function test(ONE, TWO, ...rest) { // using rest parameters in function
     console.log(ONE) // Expected output: one
     console.log(TWO) // Expected output: two
     console.log(rest) // Expected output: [1, 2, 3, 4, 5, 6]

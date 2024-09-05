@@ -207,12 +207,14 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
 - Object parameters    : passed by reference
 <br><br>
 
-### Function(Function Declaration)
+### Function
 - Fundamental building block in the program
 - Subprogram can be used multiple times
 - Performs a task or calculates a value
-- Function declarations can be called from anywhere. The reason is due to hoisting
 <br><br>
+
+#### Function Declaration
+- Function declarations can be called from anywhere. The reason is due to hoisting
 - Function declaration
   - function name(param1, param2) { body... return; }
   - one function === one thing
@@ -220,11 +222,13 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
   - function is object in JS
 <br><br>
 
-### Function expression
+#### Function expression
 - Anonymous function, Arrow function
-- What is diff Function declaration vs Function expression ?
+<br><br>
+
+##### What is diff Function declaration vs Function expression ?
 - A function declaration can be called earlier than it is defined. (hoisted)
-- A function expression is created when the execution reaches it
+- A function expression is created when the execution reaches it.
 <br><br>
 
 ### Callback function
@@ -232,7 +236,7 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
   which is then invoked inside the outer function to complete some kind of routine or action
 
 1. Declare function to be used
-```js
+```javascript
 function printImmediately(callback) {
   callback()
 }
@@ -240,7 +244,7 @@ function printImmediately(callback) {
 <br>
 
 2. Pass to callback function
-```js
+```javascript
 function callbackTest() {
   console.log('hello')
 }
@@ -249,7 +253,7 @@ printImmediately(callbackTest)
 <br>
 
 3. remove name of function(modify callbackTest to anonymous)
-```js
+```javascript
 printImmediately(function () {
   console.log('hello')
 })
@@ -257,24 +261,24 @@ printImmediately(function () {
 <br>
 
 4. modify anonymous to arrow
-```js
+```javascript
 printImmediately(() => console.log('hello'))
 ```
 <br>
 
-- How to use it?
-```js
+#### When should we use it?
+```javascript
 function doRepeat(count, callback) {
   for (let i = 0; i < count; i++) {
     callback(i)
   }
 }
 
-doRepeat(3, (i) => { // it returns 0, 1, 2
+doRepeat(3, (i) => { // Expected output: 0, 1, 2
   console.log(i)
 })
 
-doRepeat(3, (i) => { // it returns 0, 2, 4
+doRepeat(3, (i) => { // Expected output: 0, 2, 4
   console.log(i * 2)
 })
 ```

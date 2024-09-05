@@ -622,23 +622,28 @@ testFunc(person)
 - As a result, when you change either the source or the copy, you may also cause the other object to change too. 
 - That behavior contrasts with the behavior of a deep copy, in which the source and copy are completely independent.
 - The copy of an object whose properties all have primitive values fits the definition of both a deep copy and a shallow copy.
-- For shallow copies, only the top-level properties are copied, not the values of nested objects. Therefore:
-   - Re-assigning top-level properties of the copy does not affect the source object.
-   - Re-assigning nested object properties of the copy does affect the source object.
-
+- For shallow copies, only the top-level properties are copied, not the values of nested objects. 
+   - Therefore:
+      - Re-assigning top-level properties of the copy does not affect the source object.
+      - Re-assigning nested object properties of the copy does affect the source object.
 - In JavaScript, standard built-in object-copy operations (spread syntax, Array.prototype.concat(), Array.prototype.slice(), Array.from(), and Object.assign()) do not create deep copies (instead, they create shallow copies).
+<br><br>
 
 ### Deep copy
 - A deep copy of an object is a copy whose properties do not share the same references (point to the same underlying values) as those of the source object from which the copy was made. 
 - As a result, when you change either the source or the copy, you can be assured you're not causing the other object to change too. 
 - That behavior contrasts with the behavior of a shallow copy, in which changes to nested properties in the source or the copy may cause the other object to change too.
+<br><br>
 
-```js
-// shallow copy
+#### Shallow copy of Array
+```javascript
 {
-  // array
+  // same memory - array
   const arr1 = [1, 2]
   const arr2 = arr1
+
+  // arr1 ──► (0x0000) [1, 2]
+  // arr2 ─┘
 
   console.log(arr1 === arr2) // Expected output: true
 
@@ -652,9 +657,12 @@ testFunc(person)
 }
 
 {
-  // using spread syntax in array
+  // shallow copy - using spread syntax in array
   const arr1 = [1, 2]
   const arr2 = [...arr1]
+
+  // arr1 ──► (0x0000) [1, 2]
+  // arr2 ──► (0x0004) [1, 2]
 
   console.log(arr1 === arr2) // Expected output: false
 
@@ -668,68 +676,211 @@ testFunc(person)
 }
 
 {
-  // using spread syntax to array in array
+  // shallow copy - using spread syntax with nested arrays
   const arr1 = [1, 2, [3, 4]]
   const arr2 = [...arr1]
+
+  // arr1 ──► (0x0000) [1, 2, ┬  ]
+  //                          |─────► (0x0008) [3, 4]
+  // arr2 ──► (0x0004) [1, 2, ┴  ]
 
   console.log(arr1 === arr2) // Expected output: false
 
   console.log(arr1) // Expected output: [1, 2, [3, 4]]
   console.log(arr2) // Expected output: [1, 2, [3, 4]]
 
-  arr1[2][0] = 7
+  arr1[0] = 7
+  arr1[2][0] = 9
 
-  console.log(arr1) // Expected output: [1, 2, [7, 4]]
-  console.log(arr2) // Expected output: [1, 2, [7, 4]]
+  console.log(arr1) // Expected output: [7, 2, [9, 4]]
+  console.log(arr2) // Expected output: [1, 2, [9, 4]]
 }
 
 {
-  // array in array
+  // same memory - nested arrays
   const arr1 = [1, 2, [3, 4]]
   const arr2 = arr1
+
+  // arr1 ──► (0x0000) [1, 2, ┬ ]
+  // arr2 ─┘                  ┴────► (0x0004) [3, 4]
 
   console.log(arr1 === arr2) // Expected output: true
 
   console.log(arr1) // Expected output: [1, 2, [3, 4]]
   console.log(arr2) // Expected output: [1, 2, [3, 4]]
 
-  arr1[2][0] = 7
+  arr1[0] = 7
+  arr1[2][0] = 9
 
-  console.log(arr1) // Expected output: [1, 2, [7, 4]]
-  console.log(arr2) // Expected output: [1, 2, [7, 4]]
+  console.log(arr1) // Expected output: [7, 2, [9, 4]]
+  console.log(arr2) // Expected output: [7, 2, [9, 4]]
 }
 
 {
-  // object in array
+  // same memory - object in array
   const arr1 = [1, 2, { key1: 'value1' }]
   const arr2 = arr1
+
+  // arr1 ──► (0x0000) [1, 2, ┬ ]
+  // arr2 ─┘                  ┴────► (0x0004) { key1: 'value1' }
 
   console.log(arr1 === arr2) // Expected output: true
 
   console.log(arr1) // Expected output: [ 1, 2, { key1: 'value1' } ]
   console.log(arr2) // Expected output: [ 1, 2, { key1: 'value1' } ]
 
-  arr1[2].key1 = 'value2'
+  arr1[0] = 7
+  arr1[2].key1 = 'value7'
 
-  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value2' } ]
-  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value2' } ]
+  console.log(arr1) // Expected output: [ 7, 2, { key1: 'value7' } ]
+  console.log(arr2) // Expected output: [ 7, 2, { key1: 'value7' } ]
 }
 
 {
-  // using spread syntax to object in array
+  // shallow copy - using spread syntax to object in array
   const arr1 = [1, 2, { key1: 'value1' }]
   const arr2 = [...arr1]
 
+  // arr1 ──► (0x0000) [1, 2, ┬  ]
+  //                          |─────► (0x0008) { key1: 'value1' }
+  // arr2 ──► (0x0004) [1, 2, ┴  ]
+
   console.log(arr1 === arr2) // Expected output: false
 
-  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value1' }j ]
+  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value1' } ]
   console.log(arr2) // Expected output: [ 1, 2, { key1: 'value1' } ]
 
-  arr1[2].key1 = 'value2'
+  arr1[0] = 7
+  arr1[2].key1 = 'value7'
 
-  console.log(arr1) // Expected output: [ 1, 2, { key1: 'value2' } ]
-  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value2' } ]
+  console.log(arr1) // Expected output: [ 7, 2, { key1: 'value7' } ]
+  console.log(arr2) // Expected output: [ 1, 2, { key1: 'value7' } ]
 }
 ```
 <br>
+
+#### Shallow copy of Object
+```javascript
+{
+  // same memory - object
+  const obj1 = { key1: 'value1' }
+  const obj2 = obj1
+
+  // obj1 ──► (0x0000) { key1: 'value1' }
+  // obj2 ─┘
+
+  console.log(obj1 === obj2) // Expected output: true
+
+  console.log(obj1) // Expected output: { key1: 'value1' }
+  console.log(obj2) // Expected output: { key1: 'value1' }
+
+  obj1.key1 = 'value7'
+
+  console.log(obj1) // Expected output: { key1: 'value7' }
+  console.log(obj2) // Expected output: { key1: 'value7' }
+}
+
+{
+  // shallow copy - using spread syntax in object
+  const obj1 = { key1: 'value1', key2: 'value2' }
+  const obj2 = { ...obj1 }
+
+  // obj1 ──► (0x0000) { key1: 'value1', key2: 'value2' }
+  // obj2 ──► (0x0004) { key1: 'value1', key2: 'value2' }
+
+  console.log(obj1 === obj2) // Expected output: false
+
+  console.log(obj1) // Expected output: { key1: 'value1', key2: 'value2' }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: 'value2' }
+
+  obj1.key1 = 'value7'
+
+  console.log(obj1) // Expected output: { key1: 'value7', key2: 'value2' }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: 'value2' }
+}
+
+{
+  // shallow copy - using spread syntax with nested objects
+  const obj1 = { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+  const obj2 = { ...obj1 }
+
+  // obj1 ──► (0x0000) { key1: 'value1', key2: ┬ }
+  //                                           |─────► (0x0008) { key3: 'value3', key4: 'value4' }
+  // obj2 ──► (0x0004) { key1: 'value1', key2: ┴ }
+
+  console.log(obj1 === obj2) // Expected output: false
+
+  console.log(obj1) // Expected output: { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+
+  obj1.key1 = 'value7'
+  obj1.key2.key3 = 'value9'
+
+  console.log(obj1) // Expected output: { key1: 'value7', key2: { key3: 'value9', key4: 'value4' } }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: { key3: 'value9', key4: 'value4' } }
+}
+
+{
+  // same memory - nested objects
+  const obj1 = { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+  const obj2 = obj1
+
+  // obj1 ──► (0x0000) { key1: 'value1', key2:  ┬  }
+  // obj2 ─┘                                    ┴────► (0x0004) { key3: 'value3', key4: 'value4' }
+
+  console.log(obj1 === obj2) // Expected output: true
+
+  console.log(obj1) // Expected output: { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: { key3: 'value3', key4: 'value4' } }
+
+  obj1.key1 = 'value7'
+  obj1.key2.key3 = 'value9'
+
+  console.log(obj1) // Expected output: { key1: 'value7', key2: { key3: 'value9', key4: 'value4' } }
+  console.log(obj2) // Expected output: { key1: 'value7', key2: { key3: 'value9', key4: 'value4' } }
+}
+
+{
+  // same memory - array in object
+  const obj1 = { key1: 'value1', key2: [1, 2, 3] }
+  const obj2 = obj1
+
+  // obj1 ──► (0x0000) { key1: 'value1', key2:  ┬  }
+  // obj2 ─┘                                    ┴────► (0x0004) [1, 2, 3]
+
+  console.log(obj1 === obj2) // Expected output: true
+
+  console.log(obj1) // Expected output: { key1: 'value1', key2: [1, 2, 3] }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: [1, 2, 3] }
+
+  obj1.key1 = 'value7'
+  obj1.key2[1] = 7
+
+  console.log(obj1) // Expected output: { key1: 'value7', key2: [1, 7, 3] }
+  console.log(obj2) // Expected output: { key1: 'value7', key2: [1, 7, 3] }
+}
+
+{
+  // shallow copy - using spread syntax to array in object
+  const obj1 = { key1: 'value1', key2: [1, 2, 3] }
+  const obj2 = { ...obj1 }
+
+  // obj1 ──► (0x0000) { key1: 'value1', key2:  ┬  }
+  //                                            |─────► (0x0008) [1, 2, 3]
+  // obj2 ──► (0x0004) { key1: 'value1', key2:  ┴  }
+
+  console.log(obj1 === obj2) // Expected output: false
+
+  console.log(obj1) // Expected output: { key1: 'value1', key2: [1, 2, 3] }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: [1, 2, 3] }
+
+  obj1.key1 = 'value7'
+  obj1.key2[1] = 7
+
+  console.log(obj1) // Expected output: { key1: 'value7', key2: [1, 7, 3] }
+  console.log(obj2) // Expected output: { key1: 'value1', key2: [1, 7, 3] }
+}
+```
+<br>
+
 

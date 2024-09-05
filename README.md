@@ -309,13 +309,13 @@ doRepeat(3, (i) => { // Expected output: 0, 2, 4
 - One of the JavaScript's data types.
 - A collection of related data and/or functionality.
 - Nearly all objects in JavaScript are instances of Object
-```js
-obj = { key: value }
+```javascript
+const obj = { key: value }
 ```
 <br>
 
 - How to declare object?
-```js
+```javascript
 const objectLiteral = {} // 'object literal' syntax
 const objectConstructor = new Object() // 'object constructor' syntax
 ```
@@ -323,7 +323,7 @@ const objectConstructor = new Object() // 'object constructor' syntax
 
 ### Object property
 - A JavaScript property is a member of an object that associates a key with a value. 
-```js
+```javascript
 const obj = {
   a: 1,
   b() {}
@@ -332,32 +332,32 @@ const obj = {
 <br>
 
 - JavaScript, as a dynamically typed language, allows you to add properties later and also delete it later.
-```js
+```javascript
 const objTest = { name: 'jisung', age: 20 }
 
 objTest.hasJob = true
-console.log(objTest.hasJob) // it returns will jisung
+console.log(objTest.hasJob) // Expected output: true
 
 delete objTest.hasJob
-console.log(objTest.hasJob) // it returns will undefined
+console.log(objTest.hasJob) // Expected output: undefined
 ```
 <br>
 
 ### Computed property
-```js
+```javascript
 const objTest = { name: 'jisung', age: 20 }
 
-console.log(objTest.name) // it returns will jisung
-console.log(objTest['name']) // it returns will jisung
-console.log(objTest['age']) // it returns will 20
+console.log(objTest.name)    // Expected output: jisung
+console.log(objTest['name']) // Expected output: jisung
+console.log(objTest['age'])  // Expected output: 20
 
 objTest['hasJob'] = true
-console.log(objTest.hasJob) // it returns will true
+console.log(objTest.hasJob) // Expected output: true
 
 function printValue(objParam, keyParam) {
-  console.log(objParam) // it returns will objTest
-  console.log(objParam.keyParam) // it returns will undefined, the reason is objParam doesn't have literally key: keyParam
-  console.log(objParam[keyParam]) // it returns will 'jisung', it is computed properties
+  console.log(objParam) // Expected output: { name: 'jisung', age: 20, hasJob: true }
+  console.log(objParam.keyParam)  // Expected output: undefined, the reason is objParam doesn't have literally key: keyParam
+  console.log(objParam[keyParam]) // Expected output: 'jisung', it is computed properties
   }
 
 printValue(objTest, 'name')
@@ -365,11 +365,11 @@ printValue(objTest, 'name')
 <br>
 
 ### In operator: property existence check (key in obj)
-```js
+```javascript
 const obj = { name: 'jisung', age: 20 }
 
-console.log('name' in obj)   // it returns true
-console.log('random' in obj) // it returns false
+console.log('name' in obj)   // Expected output: true
+console.log('random' in obj) // Expected output: false
 ```
 <br>
 

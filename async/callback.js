@@ -20,12 +20,13 @@ console.log(`3`)
  ****************************************************************************************************
  */
 {
+  // 1. Declare function to be used
   function printImmediately(callback) {
     callback()
   }
 
   {
-    // callback 1
+    // 2. Pass to callback function
     function callbackTest() {
       console.log(`hello`)
     }
@@ -33,14 +34,14 @@ console.log(`3`)
   }
 
   {
-    // callback 2 - remove name of function
+    // 3. remove name of function(modify callbackTest to anonymous)
     printImmediately(function () {
       console.log(`hello`)
     })
   }
 
   {
-    // callback 3 - modify anonymous to arrow
+    // 4. modify anonymous to arrow
     printImmediately(() => console.log(`hello`))
   }
 }

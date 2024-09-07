@@ -470,7 +470,7 @@ map(callbackFn, thisArg)
 
 ### Falsy
 - A falsy (sometimes written falsey) value is a value that is considered false when encountered in a Boolean context.
-```js
+```javascript
 if (null || undefined || false || NaN || 0 || -0 || 0n || '') {
   console.log('Falsy')
 }
@@ -478,7 +478,7 @@ if (null || undefined || false || NaN || 0 || -0 || 0n || '') {
 <br>
 
 ### When should we use it?
-```js
+```javascript
 function testFunc(obj) {
   // if (obj === undefined || obj === null) {
   if (!obj) { // falsy

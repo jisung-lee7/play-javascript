@@ -435,7 +435,7 @@ testFunc(person)
 <br><br>
 
 ### Destructuring Array
-```js
+```javascript
 {
   // basic destructuring
   const array = [1, 2]
@@ -464,7 +464,7 @@ testFunc(person)
 }
 
 {
-  // rest elements
+  // rest syntax
   const array = [1, 2, 3, 4, 5]
   const [a, b, ...rest] = array
   console.log(a) // Expected output: 1
@@ -473,7 +473,7 @@ testFunc(person)
 }
 
 {
-  // rest elements with specific positions
+  // rest syntax with specific positions
   const array = [1, 2, 3, 4, 5]
   const [a, , b, ...rest] = array
   console.log(a) // Expected output: 1
@@ -484,7 +484,7 @@ testFunc(person)
 <br>
 
 ### Destructuring Object
-```js
+```javascript
 {
   // basic destructuring
   const obj = { a: 1, b: 2 }
@@ -515,7 +515,7 @@ testFunc(person)
 }
 
 {
-  // rest properties
+  // rest syntax
   const obj = { a: 1, b: 2, c: 3, d: 4 }
   const { a, b, ...rest } = obj
   console.log(a) // Expected output: 1
@@ -524,7 +524,7 @@ testFunc(person)
 }
 
 {
-  // rest properties with renaming
+  // rest syntax with renaming
   const obj = { a: 1, b: 2, c: 3, d: 4 }
   const { a: a1, b: b1, ...rest } = obj
   console.log(a1) // Expected output: 1

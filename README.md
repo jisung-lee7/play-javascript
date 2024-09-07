@@ -380,7 +380,7 @@ console.log('random' in obj) // Expected output: false
 - Each item in an array has a number attached to it, called a numeric index, that allows you to access it. 
 - In JavaScript, arrays start at index zero and can be manipulated with various methods.
 - How to declare array?
-```js
+```javascript
 const arr1 = [1, 2] // 'array literal' syntax
 const arr2 = new Array() // 'array constructor' syntax
 const arr3 = [ 
@@ -398,6 +398,69 @@ const arr3 = [
 ]
 ```
 <br>
+
+### Array.prototype
+#### forEach()
+- The forEach() method of Array instances executes a provided function once for each array element.
+<br><br>
+
+##### Syntax
+```javascript
+forEach(callbackFn)
+forEach(callbackFn, thisArg)
+```
+<br>
+
+##### Parameters
+- callbackFn
+   - A function to execute for each element in the array. 
+   - Its return value is discarded. 
+   - The function is called with the following arguments:
+   - element
+      - The current element being processed in the array.
+   - index
+      - The index of the current element being processed in the array.
+   - array
+      - The array forEach() was called upon.
+<br><br>
+- thisArg (Optional)
+   - A value to use as this when executing callbackFn.
+<br><br>
+
+##### Return value
+- None (undefined).
+<br><br>
+
+#### map()
+- The map() method of Array instances creates a new array populated with the results of calling a provided function on every element in the calling array.
+<br><br>
+
+##### Syntax
+```javascript
+map(callbackFn)
+map(callbackFn, thisArg)
+```
+<br>
+
+##### Parameters
+- callbackFn
+   - A function to execute for each element in the array. 
+   - Its return value is added as a single element in the new array. 
+   - The function is called with the following arguments:
+   - element
+      - The current element being processed in the array.
+   - index
+      - The index of the current element being processed in the array.
+   - array
+      - The array map() was called upon.
+<br><br>
+- thisArg (Optional)
+   - A value to use as this when executing callbackFn.
+<br><br>
+
+##### Return value
+- A new array with each element being the result of the callback function.
+<br><br>
 
 ## :label: Truthy and Falsy
 ### Truthy

@@ -15,6 +15,7 @@ My personal playground for javascript coding and learning.
 - [Destructuring assignment](#label-destructuring-assignment)
 - [Spread syntax and Rest argument](#label-spread-syntax-and-rest-argument)
 - [Shallow copy and Deep copy](#label-shallow-copy-and-deep-copy)
+- [Synchronous and Asynchronous](#label-synchronous-and-asynchronous)
 
 ## :label: Variable
 - A variable is a named reference to a value. That way an unpredictable value can be accessed through a predetermined name.
@@ -230,59 +231,6 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
 - A function declaration can be called earlier than it is defined. (hoisted)
 - A function expression is created when the execution reaches it.
 <br><br>
-
-### Callback function
-- A callback function is a function passed into another function as an argument, 
-  which is then invoked inside the outer function to complete some kind of routine or action
-
-1. Declare function to be used
-```javascript
-function printImmediately(callback) {
-  callback()
-}
-```
-<br>
-
-2. Pass to callback function
-```javascript
-function callbackTest() {
-  console.log('hello')
-}
-printImmediately(callbackTest)
-```
-<br>
-
-3. remove name of function(modify callbackTest to anonymous)
-```javascript
-printImmediately(function () {
-  console.log('hello')
-})
-```
-<br>
-
-4. modify anonymous to arrow
-```javascript
-printImmediately(() => console.log('hello'))
-```
-<br>
-
-#### When should we use it?
-```javascript
-function doRepeat(count, callback) {
-  for (let i = 0; i < count; i++) {
-    callback(i)
-  }
-}
-
-doRepeat(3, (i) => { // Expected output: 0, 1, 2
-  console.log(i)
-})
-
-doRepeat(3, (i) => { // Expected output: 0, 2, 4
-  console.log(i * 2)
-})
-```
-<br>
 
 ## :label: Scope
 - The scope is the current context of execution in which values and expressions are "visible" or can be referenced. 
@@ -946,4 +894,538 @@ testFunc(person)
 ```
 <br>
 
+## :label: Synchronous and Asynchronous
+- Synchronous
+   - Execute code in order
+- Asynchronous
+   - Unpredictable when code will run
+- JavaScript is synchronous.
+   -Execute the code block in order after hoisting.
+<br><br>
 
+### Callback function
+- A callback function is a function passed into another function as an argument, 
+  which is then invoked inside the outer function to complete some kind of routine or action
+<br><br>
+
+```javascript
+{
+  // named callback function
+  function callbackFunc() {
+    console.log('run callbackFunc()')
+  }
+
+  function printData(callback) {
+    console.log('run printData()')
+    callback()
+    console.log('done printData()')
+  }
+
+  printData(callbackFunc)
+}
+
+{
+  // named callback function with parameters
+  function callbackFunc(data) {
+    console.log('run callbackFunc()')
+    console.log(data)
+  }
+
+  function printData(num1, num2, callback) {
+    console.log('run printData()')
+    const sum = num1 + num2
+    callback(sum)
+    console.log('done printData()')
+  }
+
+  printData(1, 2, callbackFunc)
+}
+
+{
+  // arrow callback function
+  const callbackFunc = () => {
+    console.log('run callbackFunc()')
+  }
+
+  function printData(callback) {
+    console.log('run printData()')
+    callback()
+    console.log('done printData()')
+  }
+
+  printData(callbackFunc)
+}
+
+{
+  // arrow callback function with parameters
+  const callbackFunc = (data) => {
+    console.log('run callbackFunc()')
+    console.log(data)
+  }
+
+  function printData(num1, num2, callback) {
+    console.log('run printData()')
+    const sum = num1 + num2
+    callback(sum)
+    console.log('done printData()')
+  }
+
+  printData(1, 2, callbackFunc)
+}
+
+{
+  // anonymous callback function
+  function printData(callback) {
+    console.log('run printData()')
+    callback()
+    console.log('done printData()')
+  }
+
+  printData(function () {
+    console.log('run callbackFunc()')
+  })
+}
+
+{
+  // anonymous callback function with parameters
+  function printData(num1, num2, callback) {
+    console.log('run printData()')
+    const sum = num1 + num2
+    callback(sum)
+    console.log('done printData()')
+  }
+
+  printData(1, 2, function (data) {
+    console.log('run callbackFunc()')
+    console.log(data)
+  })
+}
+
+{
+  // anonymous arrow callback function
+  function printData(callback) {
+    console.log('run printData()')
+    callback()
+    console.log('done printData()')
+  }
+
+  printData(() => {
+    console.log('run callbackFunc()')
+  })
+}
+
+{
+  // anonymous arrow callback function with parameters
+  function printData(num1, num2, callback) {
+    console.log('run printData()')
+    const sum = num1 + num2
+    callback(sum)
+    console.log('done printData()')
+  }
+
+  printData(1, 2, (sum) => {
+    console.log('run callbackFunc()')
+    console.log(sum)
+  })
+}
+```
+
+#### Synchronous Callback
+```javascript
+function callbackFunc(data) {
+  console.log('run callbackFunc()')
+  console.log(data)
+  console.log('done callbackFunc()')
+}
+
+function doSynchronousTask(num1, num2, callback) {
+  console.log('run doSynchronousTask()')
+  const sum = num1 + num2
+  callback(sum)
+  console.log('done doSynchronousTask()')
+}
+
+doSynchronousTask(1, 2, callbackFunc)
+
+/*
+Expected output:
+   run doSynchronousTask()
+   run callbackFunc()
+   3
+   done callbackFunc()
+   done doSynchronousTask()
+*/
+```
+<br>
+
+#### Asynchronous Callback
+```javascript
+function doAsynchronousTask(num1, num2, callback) {
+  console.log('start doAsynchronousTask() task')
+  setTimeout(() => {
+    const sum = num1 + num2
+    callback(sum)
+  }, 2000)
+  console.log('end doAsynchronousTask() task')
+}
+
+function callbackFunc(data) {
+  console.log('run callbackFunc()')
+  console.log(data)
+  console.log('done callbackFunc()')
+}
+
+doAsynchronousTask(1, 2, callbackFunc)
+
+/*
+Expected output:
+   run doAsynchronousTask()
+   done doAsynchronousTask()
+   run callbackFunc()
+   3
+   done callbackFunc()
+*/
+```
+<br>
+
+#### When should we use it?
+```javascript
+function doRepeat(count, callback) {
+  for (let i = 0; i < count; i++) {
+    callback(i)
+  }
+}
+
+doRepeat(3, (i) => { // Expected output: 0, 1, 2
+  console.log(i)
+})
+
+doRepeat(3, (i) => { // Expected output: 0, 2, 4
+  console.log(i * 2)
+})
+```
+<br>
+
+### Promise
+- A Promise is a JavaScript object for asynchronous operation.
+- A Promise is in one of these states:
+   - pending: initial state, neither fulfilled nor rejected.
+   - fulfilled: meaning that the operation was completed successfully.
+   - rejected: meaning that the operation failed.
+<br><br>
+
+#### Constructor
+- Creates a new Promise object. 
+- The constructor is primarily used to wrap functions that do not already support promises.
+```javascript
+// When new Promise is created, the executor runs automatically.
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // doing some heavy work (network, read files)
+    console.log('doing something...')
+    resolve('success')
+    // reject(new Error('no network'))
+    console.log('after resolve or reject..')
+  }, 1000)
+})
+
+console.log(promise) // Expected output: Promise {<pending>}
+
+setTimeout(() => {
+  console.log('promise done')
+  console.log(promise) // Expected output: Promise {<fulfilled>: 'success'}
+}, 2000)
+```
+<br>
+
+#### Static methods
+- Promise.resolve()
+   - Returns a Promise object that is resolved with the given value. 
+   - If the value is a thenable (i.e. has a then method), the returned promise will "follow" that thenable, adopting its eventual state; otherwise, the returned promise will be fulfilled with the value.
+- Promise.reject()
+   - Returns a new Promise object that is rejected with the given reason.
+- Promise.try()
+   - Takes a callback of any kind (returns or throws, synchronously or asynchronously) and wraps its result in a Promise.
+- Promise.withResolvers()
+   - Returns an object containing a new Promise object and two functions to resolve or reject it, corresponding to the two parameters passed to the executor of the Promise() constructor.
+<br><br>
+
+##### Promise concurrency
+- The Promise class offers four static methods to facilitate async task concurrency:
+   - Promise.all()
+      - Fulfills when all of the promises fulfill; rejects when any of the promises rejects.
+      - Promise.all() waits until all the given promises are fulfilled and then returns an array of all the promises results.
+      - If any of the promises are rejected, Promise.all() fails immediately with the reason from the rejected promise.
+      ```javascript
+      const promise1 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('First'), 1000)
+      )
+      const promise2 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('Second'), 3000)
+      )
+      const promise3 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('Third'), 2000)
+      )
+      
+      Promise.all([promise1, promise2, promise3])
+        .then((values) => {
+          console.log('All promises fulfilled:', values) // Expected output: All promises fulfilled: ['First', 'Second', 'Third']
+        })
+        .catch((error) => {
+          console.error('One or more promises rejected:', error)
+        })
+      ```
+   <br>
+
+   - Promise.allSettled()
+      - Fulfills when all promises settle.
+      - Promise.allSettled() waits until all given promises are either fulfilled or rejected, and then returns an array of objects representing the results of each promise.
+      - Each object includes the promise’s status (fulfilled or rejected) and the result (value or reason).
+      ```javascript
+      const promise1 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('First'), 1000)
+      )
+      const promise2 = new Promise((resolve, reject) =>
+        setTimeout(() => reject('Second failed'), 3000)
+      )
+      const promise3 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('Third'), 2000)
+      )
+      
+      Promise.allSettled([promise1, promise2, promise3]).then((results) => {
+        console.log('All promises settled:', results)
+        /*
+        Expected output:
+        All promises settled: [
+          { status: 'fulfilled', value: 'First' },
+          { status: 'rejected', reason: 'Second failed' },
+          { status: 'fulfilled', value: 'Third' }
+        ]
+      */
+      })
+      ```
+   <br>
+
+   - Promise.any()
+      - Fulfills when any of the promises fulfills; rejects when all of the promises reject.
+      - Promise.any() returns the fulfillment result of the first promise that fulfills among the given promises. 
+      - If all promises are rejected, it throws an AggregateError.
+      ```javascript
+      const promise1 = new Promise((resolve, reject) =>
+        setTimeout(() => reject('First failed'), 1000)
+      )
+      const promise2 = new Promise((resolve, reject) =>
+        setTimeout(() => reject('Second failed'), 3000)
+      )
+      const promise3 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('Third'), 2000)
+      )
+      
+      Promise.any([promise1, promise2, promise3])
+        .then((value) => {
+          console.log('First fulfilled promise:', value) // Expected output: First fulfilled promise: Third
+        })
+        .catch((error) => {
+          console.error('All promises were rejected:', error)
+        })
+      ```
+   <br>
+
+   - Promise.race()
+      - Settles when any of the promises settles. In other words, fulfills when any of the promises fulfills; rejects when any of the promises rejects.
+      - Promise.race() returns the first promise that either fulfills or rejects among the given promises. 
+      - In other words, it returns the result of the first promise to settle.
+      ```javascript
+      const promise1 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('First'), 3000)
+      )
+      const promise2 = new Promise((resolve, reject) =>
+        setTimeout(() => reject('Second failed'), 1000)
+      )
+      const promise3 = new Promise((resolve, reject) =>
+        setTimeout(() => resolve('Third'), 2000)
+      )
+      
+      Promise.race([promise1, promise2, promise3])
+        .then((value) => {
+          console.log('Race winner:', value) // Expected output: Race winner: Second failed
+        })
+        .catch((error) => {
+          console.error('Race failed with:', error)
+        })
+      ```
+   <br>
+
+#### Instance methods
+- Promise.prototype.then()
+   - Appends fulfillment and rejection handlers to the promise.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // doing some asynchronous operation
+        setTimeout(() => resolve('Success'), 1000)
+      })
+
+      // Adding handlers with .then()
+      promise.then(
+        (value) => console.log('Fulfilled with:', value), // Handler for fulfillment - Expected output: Fulfilled with: Success
+        (error) => console.error('Rejected with:', error) // Handler for rejection
+      )
+      ```
+   <br>
+
+   - And returns a new promise resolving to the return value of the called handler.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve('Original Value'), 1000)
+      })
+
+      const newPromise = promise.then((value) => {
+        console.log('Handled Value:', value) // Expected output: Handled Value: Original Value
+        return 'New Value'
+      })
+
+      newPromise.then((value) => console.log('New Promise Value:', value)) // Expected output: New Promise Value: New Value
+      ```
+   <br>
+
+   - Or to its original settled value if the promise was not handled (i.e. if the relevant handler onFulfilled or onRejected is not a function).
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Original Value"), 1000);
+      });
+      
+      const newPromise = promise.then();  // No handler functions provided
+      
+      newPromise.then((value) => console.log("Original Value Passed Through:", value)); // Expected output: Original Value Passed Through: Original Value
+      ```
+   <br>
+
+- Promise.prototype.catch()
+   - Appends a rejection handler callback to the promise.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Error occurs after 1 second
+        setTimeout(() => reject(new Error('Something went wrong!')), 1000)
+      })
+      
+      // Adding a rejection handler with catch()
+      promise.catch((error) => {
+        console.error('Caught Error:', error.message) // Expected output: Caught Error: Something went wrong!
+      })
+      ```
+   <br>
+
+   - And returns a new promise resolving to the return value of the callback if it is called.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Error occurs after 1 second
+        setTimeout(() => reject(new Error('Something went wrong!')), 1000)
+      })
+      
+      const newPromise = promise.catch((error) => {
+        console.error('Caught Error:', error.message) // Expected output: Caught Error: Something went wrong!
+        return 'Recovered' // Returning a new value
+      })
+      
+      newPromise.then((value) => {
+        console.log('New Promise Value:', value) // Expected output: New Promise Value: Recovered
+      })
+      ```
+   <br>
+
+   - Or to its original fulfillment value if the promise is instead fulfilled.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Successfully resolves after 1 second
+        setTimeout(() => resolve('Success'), 1000)
+      })
+      
+      const newPromise = promise.catch((error) => {
+        console.error('Caught Error:', error.message)
+        return 'Recovered'
+      })
+      
+      newPromise.then((value) => {
+        console.log('Original Fulfillment Value:', value) // Expected output: Original Fulfillment Value: Success
+      })
+      ```
+   <br>
+
+- Promise.prototype.finally()
+   - Appends a handler to the promise.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Successfully resolves after 1 second
+        setTimeout(() => resolve('Success'), 1000)
+      })
+      
+      // Adding a handler with finally()
+      promise.finally(() => {
+        console.log('Promise settled!') // Expected output: Promise settled!
+      })
+      ```
+   <br>
+
+   - And returns a new promise that is resolved when the original promise is resolved. 
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Successfully resolves after 1 second
+        setTimeout(() => resolve('Success'), 1000)
+      })
+      
+      const newPromise = promise.finally(() => {
+        console.log('Cleaning up...') // Expected output: Cleaning up...
+      })
+      
+      newPromise.then((value) => {
+        console.log('Final Value:', value) // Expected output: Final Value: Success
+      })
+      ```
+   <br>
+
+   - The handler is called when the promise is settled, whether fulfilled or rejected.
+      ```javascript
+      const promise = new Promise((resolve, reject) => {
+        // Error occurs after 1 second
+        setTimeout(() => reject(new Error('Something went wrong!')), 1000)
+      })
+      
+      // finally() will be called whether the promise is fulfilled or rejected
+      promise
+        .catch((error) => {
+          console.error('Caught Error:', error.message) // Expected output: Caught Error: Something went wrong!
+        })
+        .finally(() => {
+          console.log('Promise settled! Cleaning up...') // Expected output: Promise settled! Cleaning up...
+        })
+      ```
+   <br>
+
+### async / await
+- Promise-based behavior to be written in a cleaner style and avoiding the need to explicitly configure promise chains.
+- An async function declaration creates an AsyncFunction object. 
+- Each time when an async function is called, it returns a new Promise which will be resolved with the value returned by the async function, or rejected with an exception uncaught within the async function.
+   - An async function automatically returns a Promise.
+- Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. 
+   - The await keyword can only be used inside async functions.
+   - Async functions can contain zero or more await expressions.
+- You can use await to handle Promises more cleanly and use try/catch blocks to manage errors in asynchronous code.
+
+```javascript
+function resolveAfter2Seconds() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  // Expected output: "resolved"
+}
+
+asyncCall();
+```

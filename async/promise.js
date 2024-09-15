@@ -9,6 +9,11 @@
  */
 console.log(`\n[ Promise ]`)
 
+{
+  // const promise = new Promise(() => {})
+  // console.log(`c.log ## promise ##`, promise)
+}
+
 /**
  ****************************************************************************************************
  * ### Producer
@@ -18,21 +23,22 @@ console.log(`\n[ Promise ]`)
 console.log(`\n[ Producer ]`)
 
 {
-  // doing some heavy work (network, read files)
+  // // When new Promise is created, the executor runs automatically.
   // const promise = new Promise((resolve, reject) => {
-  //   console.log(`doing something...`)
+  //   // doing some heavy work (network, read files)
+  //   console.log('doing something...')
   //   setTimeout(() => {
-  //     resolve('jisung')
+  //     resolve('success')
   //     // reject(new Error('no network'))
-  //   }, 2000)
+  //   }, 1000)
   // })
   //
-  // console.log(`c.log ## promise ##`, promise)
+  // console.log(promise)
   //
   // setTimeout(() => {
-  //   console.log(`done`)
-  //   console.log(`c.log ## promise ##`, promise)
-  // }, 3000)
+  //   console.log('done')
+  //   console.log(promise)
+  // }, 2000)
 }
 
 /**
@@ -135,7 +141,7 @@ console.log(`\n[ Error handling ]`)
 console.log(`\n[ Examples ]`)
 
 {
-  // before use Promise
+  // // before use Promise
   // const f1 = (callback) => {
   //   setTimeout(function () {
   //     console.log('order 1 done')
@@ -166,58 +172,65 @@ console.log(`\n[ Examples ]`)
   //     })
   //   })
   // })
+}
 
-  // after use Promise
-  const f1 = (message) => {
-    console.log(`c.log ## message ## ${message}`)
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 1 done')
-      }, 1000)
-    })
-  }
-
-  const f2 = (message) => {
-    console.log(`c.log ## message ## ${message}`)
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 2 done')
-      }, 3000)
-    })
-  }
-
-  const f3 = (message) => {
-    console.log(`c.log ## message ## ${message}`)
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 3 done')
-      }, 2000)
-    })
-  }
-
-  console.log(`start`)
-
-  // Promise chaining
-  // f1()
-  //   .then((res) => f2(res))
-  //   .then((res) => f3(res))
-  //   .then((res) => console.log(`c.log ## res ## ${res}`))
-  //   .catch(console.log)
-  //   .finally(() => {
-  //     console.log(`c.log ## end ##`)
+{
+  // // after use Promise
+  // const f1 = () => {
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 1 done')
+  //     }, 2000)
   //   })
-
-  // Prlmise.all
-  // console.time('x')
-  // Promise.all([f1(), f2(), f3()]).then((res) => {
-  //   console.log(`c.log ## res ## ${res}`)
-  //   console.timeEnd('x')
-  // })
-
-  // Prlmise.race
-  console.time('x')
-  Promise.race([f1(), f2(), f3()]).then((res) => {
-    console.log(`c.log ## res ## ${res}`)
-    console.timeEnd('x')
-  })
+  // }
+  //
+  // const f2 = (message) => {
+  //   console.log(`c.log ## message ## ${message}`)
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 2 done')
+  //     }, 1000)
+  //   })
+  // }
+  //
+  // const f3 = (message) => {
+  //   console.log(`c.log ## message ## ${message}`)
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 3 done')
+  //     }, 3000)
+  //   })
+  // }
+  //
+  // console.log(`start`)
+  //
+  // {
+  //   // // Promise chaining
+  //   // f1()
+  //   //   .then((res) => f2(res))
+  //   //   .then((res) => f3(res))
+  //   //   .then((res) => console.log(`c.log ## res ## ${res}`))
+  //   //   .catch(console.log)
+  //   //   .finally(() => {
+  //   //     console.log(`c.log ## end ##`)
+  //   //   })
+  // }
+  //
+  // {
+  //   // // Promise.all
+  //   // console.time('x')
+  //   // Promise.all([f1(), f2(), f3()]).then((res) => {
+  //   //   console.log(`c.log ## res ## ${res}`)
+  //   //   console.timeEnd('x')
+  //   // })
+  // }
+  //
+  // {
+  //   // // Promise.race
+  //   // console.time('x')
+  //   // Promise.race([f1(), f2(), f3()]).then((res) => {
+  //   //   console.log(`c.log ## res ## ${res}`)
+  //   //   console.timeEnd('x')
+  //   // })
+  // }
 }

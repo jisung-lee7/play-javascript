@@ -6,6 +6,70 @@
 console.log(`\n[ Promise ]`)
 
 {
+  // const obj = {
+  //   name: 'Jisung',
+  //   id: 'JisungLee'
+  // }
+  //
+  // const promise = new Promise((resolve, reject) => {
+  //   resolve(obj)
+  // })
+  //
+  // async function usePromise() {
+  //   return new Promise((resolve, reject) => {
+  //     resolve(obj)
+  //   })
+  // }
+  //
+  // async function useAsync() {
+  //   return obj
+  // }
+  //
+  // console.log(promise) // Expected output: Promise {<fulfilled>: { name: 'Jisung', id: 'JisungLee' }}
+  // console.log(usePromise()) // Expected output: Promise {<pending>: { name: 'Jisung', id: 'JisungLee' }}
+  // console.log(useAsync()) // Expected output: Promise {<fulfilled>: { name: 'Jisung', id: 'JisungLee' }}
+  //
+  // console.log(
+  //   new Promise((resolve) => {
+  //     resolve(obj)
+  //   })
+  // )
+}
+
+{
+  // function fetchUser() {
+  //   return 'jisung'
+  // }
+  //
+  // const user = fetchUser()
+  // console.log(user)
+}
+
+{
+  // function promiseFetchUser() {
+  //   // do network request in 10 sec..
+  //
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('jisung')
+  //     }, 2000)
+  //   })
+  // }
+  //
+  // const user = promiseFetchUser()
+  // console.log(user)
+  //
+  // user.then((result) => {
+  //   console.log(result)
+  // })
+}
+
+{
+  const user = Promise.resolve('hello')
+  console.log(user)
+}
+
+{
   // function promiseFetchUser() {
   //   return new Promise((resolve) => {
   //     // do network request in 10 secs...
@@ -172,66 +236,66 @@ console.log(`\n[ Examples ]`)
 }
 
 {
-  const f1 = (message) => {
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 1 done')
-      }, 1000)
-    })
-  }
-
-  const f2 = (message) => {
-    console.log(`c.log ## message ## ${message}`)
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 2 done')
-        // rej(new Error('error...'))
-      }, 3000)
-    })
-  }
-
-  const f3 = (message) => {
-    console.log(`c.log ## message ## ${message}`)
-    return new Promise((res, rej) => {
-      setTimeout(function () {
-        res('order 3 done')
-      }, 2000)
-    })
-  }
-
-  // async, await
+  // const f1 = (message) => {
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 1 done')
+  //     }, 1000)
+  //   })
+  // }
+  //
+  // const f2 = (message) => {
+  //   console.log(`c.log ## message ## ${message}`)
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 2 done')
+  //       // rej(new Error('error...'))
+  //     }, 3000)
+  //   })
+  // }
+  //
+  // const f3 = (message) => {
+  //   console.log(`c.log ## message ## ${message}`)
+  //   return new Promise((res, rej) => {
+  //     setTimeout(function () {
+  //       res('order 3 done')
+  //     }, 2000)
+  //   })
+  // }
+  //
+  // // async, await
+  // // async function order() {
+  // //   try {
+  // //     console.log(`c.log ## start ##`)
+  // //     const result1 = await f1()
+  // //     const result2 = await f2(result1)
+  // //     const result3 = await f3(result2)
+  // //     console.log(`c.log ## result3 ##`, result3)
+  // //   } catch (error) {
+  // //     console.log(`c.log ## error ##`, error)
+  // //   }
+  // //   console.log(`c.log ## end ##`)
+  // // }
+  //
+  // // Promise.all
   // async function order() {
   //   try {
   //     console.log(`c.log ## start ##`)
-  //     const result1 = await f1()
-  //     const result2 = await f2(result1)
-  //     const result3 = await f3(result2)
-  //     console.log(`c.log ## result3 ##`, result3)
+  //     const result = await Promise.all([f1(), f2(), f3()])
+  //     console.log(`c.log ## result ##`, result)
   //   } catch (error) {
   //     console.log(`c.log ## error ##`, error)
   //   }
   //   console.log(`c.log ## end ##`)
   // }
-
-  // Promise.all
-  async function order() {
-    try {
-      console.log(`c.log ## start ##`)
-      const result = await Promise.all([f1(), f2(), f3()])
-      console.log(`c.log ## result ##`, result)
-    } catch (error) {
-      console.log(`c.log ## error ##`, error)
-    }
-    console.log(`c.log ## end ##`)
-  }
-
-  order()
-  // f1()
-  //   .then((res) => f2(res))
-  //   .then((res) => f3(res))
-  //   .then((res) => console.log(`c.log ## res ## ${res}`))
-  //   .catch(console.log)
-  //   .finally(() => {
-  //     console.log(`c.log ## end ##`)
-  //   })
+  //
+  // order()
+  // // f1()
+  // //   .then((res) => f2(res))
+  // //   .then((res) => f3(res))
+  // //   .then((res) => console.log(`c.log ## res ## ${res}`))
+  // //   .catch(console.log)
+  // //   .finally(() => {
+  // //     console.log(`c.log ## end ##`)
+  // //   })
 }

@@ -4,7 +4,6 @@ My personal playground for javascript coding and learning.
 
 ## :pushpin: Summary
 ### Table of contents
----
 - [Variable](#label-variable)
 - [Operator](#label-operator)
 - [Function](#label-function)
@@ -25,12 +24,12 @@ My personal playground for javascript coding and learning.
       ```javascript
       function test() {
           if (true) {
-              var x = 10; 
+              var x = 10 
           }
-          console.log(x); // Expected output: 10
+          console.log(x) // Expected output: 10
       }
       
-      test();
+      test()
       ```
 <br>
 
@@ -1291,12 +1290,12 @@ setTimeout(() => {
    - Or to its original settled value if the promise was not handled (i.e. if the relevant handler onFulfilled or onRejected is not a function).
       ```javascript
       const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Original Value"), 1000);
-      });
+        setTimeout(() => resolve("Original Value"), 1000)
+      })
       
-      const newPromise = promise.then();  // No handler functions provided
+      const newPromise = promise.then()  // No handler functions provided
       
-      newPromise.then((value) => console.log("Original Value Passed Through:", value)); // Expected output: Original Value Passed Through: Original Value
+      newPromise.then((value) => console.log("Original Value Passed Through:", value)) // Expected output: Original Value Passed Through: Original Value
       ```
    <br>
 
@@ -1415,17 +1414,17 @@ setTimeout(() => {
 function resolveAfter2Seconds() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('resolved');
-    }, 2000);
-  });
+      resolve('resolved')
+    }, 2000)
+  })
 }
 
 async function asyncCall() {
-  console.log('calling');
-  const result = await resolveAfter2Seconds();
-  console.log(result);
+  console.log('calling')
+  const result = await resolveAfter2Seconds()
+  console.log(result)
   // Expected output: "resolved"
 }
 
-asyncCall();
+asyncCall()
 ```

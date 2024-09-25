@@ -151,6 +151,25 @@ console.log(1 ** 1) // exponentiation, power
    - That means finds the first falsy value
 <br><br>
 
+### Optional chaining - new(ES11)
+- The optional chaining (?.) operator accesses an object's property or calls a function.
+- If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
+```javascript
+const adventurer = {
+  name: 'Alice',
+  cat: {
+    name: 'Dinah',
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName); // Expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.()); // Expected output: undefined
+
+```
+<br>
+
 ### Nullish coalescing operator - new(ES11)
 - leftExpr ?? rightExpr
    - When leftExpr === null or undefined, it returns rightExpr

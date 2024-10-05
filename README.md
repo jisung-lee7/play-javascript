@@ -428,6 +428,46 @@ map(callbackFn, thisArg)
 - A new array with each element being the result of the callback function.
 <br><br>
 
+#### reduce()
+- The reduce() method of Array instances executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. 
+- The final result of running the reducer across all elements of the array is a single value.
+<br><br>
+
+##### Syntax
+```javascript
+reduce(callbackFn)
+reduce(callbackFn, initialValue)
+```
+<br>
+
+##### Parameters
+- callbackFn
+   - A function to execute for each element in the array. 
+   - Its return value becomes the value of the accumulator parameter on the next invocation of callbackFn.
+   - For the last invocation, the return value becomes the return value of reduce(). 
+   - The function is called with the following arguments:
+   - accumulator
+      - The value resulting from the previous call to callbackFn. 
+      - On the first call, its value is initialValue if the latter is specified; otherwise its value is array[0].
+   - currentValue
+      - The value of the current element. On the first call, its value is array[0] if initialValue is specified; otherwise its value is array[1].
+   - currentIndex
+      - The index position of currentValue in the array. On the first call, its value is 0 if initialValue is specified, otherwise 1.
+   - array
+      - The array reduce() was called upon.
+
+<br><br>
+- initialValue (Optional)
+   - A value to which accumulator is initialized the first time the callback is called. 
+   - If initialValue is specified, callbackFn starts executing with the first value in the array as currentValue. 
+   - If initialValue is not specified, accumulator is initialized to the first value in the array, and callbackFn starts executing with the second value in the array as currentValue. 
+   - In this case, if the array is empty (so that there's no first value to return as accumulator), an error is thrown.
+<br><br>
+
+##### Return value
+- The value that results from running the "reducer" callback function to completion over the entire array.
+<br><br>
+
 ## :label: Truthy and Falsy
 ### Truthy
 - In JavaScript, a truthy value is a value that is considered true when encountered in a Boolean context.

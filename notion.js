@@ -2,16 +2,6 @@
  ****************************************************************************************************
  * ### Closure
  ****************************************************************************************************
- * Dictionary definition
-   : A combination of a function and the lexical environment in which it was declared
- * When a function is declared inside another function, it remembers the external environment at the time of declaration
- * When a function is declared, the lexical environment stores two pieces of information.
- *   1. Execution context record of the function
- *   2. Outer reference information
- * When use the closure?
- *   1. Data encaptulation/private
- *   2. State maintenance
- *   3. Functional Programming, currying
  */
 console.log(`\n[ Closure ]`)
 

@@ -214,7 +214,7 @@ console.log('10 >= 7', 10 >= 7) // greater than or equal
 ## :label: Function
 - Javascript supports first-class function
 <br><br>
-- First-class function
+- First-class objects
    - Functions are treated like any other variable
    - Can be assigned as a value to variable
    - Can be passed as an argument to other functions
